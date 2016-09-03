@@ -1,0 +1,44 @@
+ $input = $_POST['input'];
+    $categories = $_POST['category'];
+    $state = $_POST['state'];
+    $zipcode = $_POST['zipcode'];
+
+    $qq = $db->prepare(" SELECT * FROM classified  ")or die(print_r($qq->errorInfo(),
+    true));
+    /*** execute the prepared statement ***/
+    $qq->execute();
+
+/*** echo number of columns ***/
+$rows = $qq->fetch(PDO::FETCH_NUM);
+if ($rows>0){
+
+ $query = " SELECT * FROM classified where confirm='0' ";  
+ if(!empty( $_POST['input'])) {
+
+ $query .= "AND title LIKE '%".$input."%' ";
+ }
+
+
+if (!empty($_POST['category']) )
+   {
+  $query .= "AND id_cat = ".$categories." ";
+
+ }
+
+  if (!empty($_POST['state']) )
+  {
+  $query .= "AND id_state = ".$state." ";
+
+  }
+
+
+  if(!empty($_POST['zipcode'])) {
+
+  $query .= "AND zipcode = ".$zipcode." ";
+  }
+   $query .= "ORDER BY date ";
+
+    }
+
+   $stmt = $db->prepare($query);
+  $stmt->execute($params);

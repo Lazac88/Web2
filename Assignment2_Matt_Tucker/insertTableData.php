@@ -1,16 +1,35 @@
 <?php
+	
+include 'connect.inc.php';
+	
+	//Connect to mySQL server
+	try
+	{
+		$pdo = new PDO("mysql:host=$host;dbname=$database", $userMS, $passwordMS);
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$pdo->exec('SET NAMES "utf8"');
+	}
+	catch(PDOException $e)
+	{
+		$error = 'Connection to database failed';
+		include 'error.html.php';
+		exit();
+	}
+
+
 	//Insert Country Data
 	try
 	{
-		$file = fopen("countryList.csv","r");
+		$file = fopen("csvFiles/countryInfo.csv","r");
 
   		while(! feof($file))
   		{
   			$temp = fgetcsv($file);
 
   			
-  			$insertQuery = "INSERT INTO countryTable(countryName, countryFlagImage, countryPopulation) 
+  			$insertQuery = "INSERT INTO countryTableRio(countryName, countryFlagImage, countryPopulation) 
   							VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
+  							echo $insertQuery;
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);
@@ -23,7 +42,7 @@
 	//Insert athleteTable Data
 	try
 	{
-		$file = fopen("athletesList.csv","r");
+		$file = fopen("csvFiles/athleteInfo.csv","r");
 
   		while(! feof($file))
   		{
@@ -36,7 +55,7 @@
   			//echo $temp[2];
   			//echo $temp[3];
   			//echo $temp[4];
-  			$insertQuery = "INSERT INTO athleteInfo(lastName, firstName, gender, athleteImage, countryID) VALUES('$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]', $temp[4])";
+  			$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES('$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]', $temp[4])";
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);
@@ -49,13 +68,13 @@
 	//Insert eventTable Data
 	try
 	{
-		$file = fopen("sportsEventsList.csv","r");
+		$file = fopen("csvFiles/eventSportInfo.csv","r");
 
   		while(! feof($file))
   		{
   			$temp = fgetcsv($file);
 
-  			$insertQuery = "INSERT INTO eventInfo(sport, event) VALUES('$temp[0]', '$temp[1]')";
+  			$insertQuery = "INSERT INTO eventTableRio(sport, event) VALUES('$temp[0]', '$temp[1]')";
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);
@@ -68,13 +87,13 @@
 	//Insert medalTable Data
 	try
 	{
-		$file = fopen("medalsList.csv","r");
+		$file = fopen("csvFiles/medalsList.csv","r");
 
   		while(! feof($file))
   		{
   			$temp = fgetcsv($file);
   			
-  			$insertQuery = "INSERT INTO medalTable(medalName) VALUES('$temp[0]')";
+  			$insertQuery = "INSERT INTO medalTableRio(medalName) VALUES('$temp[0]')";
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);
@@ -87,13 +106,13 @@
 	//Insert athleteEventTable Data
 	try
 	{
-		$file = fopen("athleteEventMedal.csv","r");
+		$file = fopen("csvFiles/athleteEventInfo.csv","r");
 
   		while(! feof($file))
   		{
   			$temp = fgetcsv($file);
 
-  			$insertQuery = "INSERT INTO athleteEventTable(athleteID, eventID, medalID) 
+  			$insertQuery = "INSERT INTO athleteEventTableRio(athleteID, eventID, medalID) 
   							VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
 			$pdo->exec($insertQuery);
   		}

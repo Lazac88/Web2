@@ -25,15 +25,15 @@
 	//Delete Tables
 	try
 	{
-		$dropQuery = "DROP TABLE IF EXISTS athleteEventTable";
+		$dropQuery = "DROP TABLE IF EXISTS athleteEventTableRio";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS athleteTable";
+		$dropQuery = "DROP TABLE IF EXISTS athleteTableRio";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS eventTable";
+		$dropQuery = "DROP TABLE IF EXISTS eventTableRio";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS medalTable";
+		$dropQuery = "DROP TABLE IF EXISTS medalTableRio";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS countryTable";
+		$dropQuery = "DROP TABLE IF EXISTS countryTableRio";
 		$pdo->exec($dropQuery);
 
 	}
@@ -47,7 +47,7 @@
 	//Create the counrty table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE countryTable
+		$createQuery = "CREATE TABLE countryTableRio
 						(
 							countryID INT(6) NOT NULL AUTO_INCREMENT,
 							countryName VARCHAR(20) NOT NULL,
@@ -68,7 +68,7 @@
 	//Create the athlete table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE athleteInfo
+		$createQuery = "CREATE TABLE athleteTableRio
 						(
 							athleteID INT(6) NOT NULL AUTO_INCREMENT,
 							lastName VARCHAR(20) NOT NULL,
@@ -78,7 +78,7 @@
 							countryID INT(6) NOT NULL,						
 
 							PRIMARY KEY(athleteID),
-							FOREIGN KEY (countryID) REFERENCES countryTable(countryID)
+							FOREIGN KEY (countryID) REFERENCES countryTableRio(countryID)
 						)";
 		$pdo->exec($createQuery);
 	}
@@ -93,7 +93,7 @@
 	try
 	{
 
-		$createQuery = "CREATE TABLE eventTable
+		$createQuery = "CREATE TABLE eventTableRio
 						(
 							eventID INT(6) NOT NULL AUTO_INCREMENT,
 							sport VARCHAR(20) NOT NULL,
@@ -113,7 +113,7 @@
 	//Create the medal table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE medalTable
+		$createQuery = "CREATE TABLE medalTableRio
 						(
 							medalID INT(6) NOT NULL AUTO_INCREMENT,
 							medalName VARCHAR(20) NOT NULL,
@@ -132,16 +132,16 @@
 	//Create the AthleteEvent table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE athleteEventTable
+		$createQuery = "CREATE TABLE athleteEventTableRio
 						(
 							athleteID INT(6) NOT NULL,
 							eventID INT(6) NOT NULL,
 							medalID INT(6) NOT NULL,							
 
 							PRIMARY KEY(athleteID, eventID, medalID),
-							FOREIGN KEY (athleteID) REFERENCES athleteTable(athleteID),
-							FOREIGN KEY (eventID) REFERENCES eventTable(eventID),
-							FOREIGN KEY (medalID) REFERENCES medalTable(medalID)
+							FOREIGN KEY (athleteID) REFERENCES athleteTableRio(athleteID),
+							FOREIGN KEY (eventID) REFERENCES eventTableRio(eventID),
+							FOREIGN KEY (medalID) REFERENCES medalTableRio(medalID)
 						)";
 		$pdo->exec($createQuery);
 	}

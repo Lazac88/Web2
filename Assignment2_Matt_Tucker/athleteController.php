@@ -5,6 +5,9 @@
 	Assignment 2
 	*/
 
+	include 'createTables.php';
+	include 'insertTableData.php'; 
+
 	if (isset($_POST['findAthlete']))			//If the search athlete button has been clicked
 	{
 		//Check if firstname has a value, if not make it a wildcard
@@ -24,19 +27,19 @@
 
 
 		$query = "SELECT athleteID, athleteImage, firstName, lastName, sport, event, medalName, countryName, countryFlagImage
-				  FROM athleteTable LEFT JOIN athleteEventTable
-				  ON athleteTable.athleteID = athleteEventTable.athleteID
-				  LEFT JOIN countryTable
-				  ON  athleteTable.countryID = countryTable.countryID
-				  LEFT JOIN eventTable
-				  ON athleteEventTable.eventID = eventTable.eventID
-				  LEFT JOIN medalTable
-				  ON athleteEventTable.medalID = medalTable.medalID ";
+				  FROM athleteTableRio LEFT JOIN athleteEventTableRio
+				  ON athleteTableRio.athleteID = athleteEventTableRio.athleteID
+				  LEFT JOIN countryTableRio
+				  ON  athleteTableRio.countryID = countryTableRio.countryID
+				  LEFT JOIN eventTableRio
+				  ON athleteEventTableRio.eventID = eventTableRio.eventID
+				  LEFT JOIN medalTableRio
+				  ON athleteEventTableRio.medalID = medalTableRio.medalID ";
 
 		
 		if(sizeof($_POST) > 1)
 		{
-			$query .= "WHERE "					//Need help here. What do I put as my first WHERE
+			$query .= "WHERE ";
 
 			if(!empty( $_POST['FirstName']))
 			{
@@ -70,14 +73,14 @@
 	//If delete athlete button clicked
 	else if (isset($_POST['deleteAthlete']))
 	{
-		$toDelete = $_POST[athleteDelete[]];
+		$toDelete = $_POST['athleteDelete'];
 
 		foreach ($toDelete as $delete)
 		{
-			$query = "DELETE FROM athleteEventTable	WHERE athleteID = $delete";
-			pdo->query($query);
-			$query = "DELETE FROM athleteTable	WHERE athleteID = $delete";
-			pdo->query($query);
+			$query = "DELETE FROM athleteEventTableRio	WHERE athleteID = $delete";
+			$pdo->query($query);
+			$query = "DELETE FROM athleteTableRio	WHERE athleteID = $delete";
+			$pdo->query($query);
 		}
 	}
 

@@ -5,8 +5,24 @@
 	Assignment 2
 	*/
 
-	include 'createTables.php';
-	include 'insertTableData.php'; 
+	//include 'createTables.php';
+	//include 'insertTableData.php'; 
+
+	include 'connect.inc.php';
+	
+	//Connect to mySQL server
+	try
+	{
+		$pdo = new PDO("mysql:host=$host;dbname=$database", $userMS, $passwordMS);
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$pdo->exec('SET NAMES "utf8"');
+	}
+	catch(PDOException $e)
+	{
+		$error = 'Connection to database failed';
+		include 'error.html.php';
+		exit();
+	}
 
 	if (isset($_POST['findAthlete']))			//If the search athlete button has been clicked
 	{
@@ -87,5 +103,14 @@
 	//if the search screen is loaded for the first time
 	else 		
 	{
+		$query = "SELECT DISTINCT sport FROM eventTableRio";
+		$allSports = $pdo->query($query);
+
+		$query = "SELECT DISTINCT countryName FROM countryTableRio";
+		$allCountries = $pdo->query($query);
+
+		$query = "SELECT DISTINCT medalName FROM medalTableRio";
+		$allMedals = $pdo->query($query);
+
 		include 'RioSearchAthlete.html.php';
 	}

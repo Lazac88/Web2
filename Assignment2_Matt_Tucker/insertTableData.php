@@ -27,9 +27,8 @@ include 'connect.inc.php';
   			$temp = fgetcsv($file);
 
   			
-  			$insertQuery = "INSERT INTO countryTableRio(countryName, countryFlagImage, countryPopulation) 
-  							VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
-  							echo $insertQuery;
+  			$insertQuery = "INSERT INTO countryTableRio(countryName, countryFlagImage, countryPopulation) VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
+  				
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);
@@ -114,6 +113,7 @@ include 'connect.inc.php';
 
   			$insertQuery = "INSERT INTO athleteEventTableRio(athleteID, eventID, medalID) 
   							VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
+  							echo $insertQuery;
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);

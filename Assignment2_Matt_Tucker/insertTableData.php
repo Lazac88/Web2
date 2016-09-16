@@ -16,7 +16,6 @@ include 'connect.inc.php';
 		exit();
 	}
 
-
 	//Insert Country Data
 	try
 	{
@@ -47,14 +46,7 @@ include 'connect.inc.php';
   		{
   			$temp = fgetcsv($file);
 
-  			//Used for testing purposes below
-
-  			//echo $temp[0];
-  			//echo $temp[1];
-  			//echo $temp[2];
-  			//echo $temp[3];
-  			//echo $temp[4];
-  			$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES('$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]', $temp[4])";
+  			$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES('$temp[1]', '$temp[0]', '$temp[2]', '$temp[3]', $temp[4])";
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);

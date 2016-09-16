@@ -34,6 +34,7 @@
 
 		<!--List all sport chocies including All Sports-->
 		<select class="btnSpace" name="sport">
+			<option></option>
 			<option value='All Sports'>All Sports</option>
 			<?php
 				foreach ($allSports as $row) 
@@ -43,6 +44,7 @@
 			?>
 		</select>
 		<select class="btnSpace" name="country">
+			<option></option>
 			<option value='All Countries'>All Countries</option>
 			<?php
 				foreach ($allCountries as $row) 
@@ -52,6 +54,7 @@
 			?>
 		</select>
 		<select class="btnSpace" name="medal">
+			<option></option>
 			<option value='All Medals'>All Medals</option>
 			<?php
 				foreach ($allMedals as $row) 
@@ -62,7 +65,7 @@
 		</select>
 		
 		<!--Sends User To Output Page with selected value -->
-		<button class="btnSpace" type='submit' name='chooseSport' value='chooseSport'>Find Your Athletes</button>
+		<button class="btnSpace" type='submit' name='findAthlete' value='findAthlete'>Find Your Athletes</button>
 		</form>	
 	</div>
 </body>

@@ -21,6 +21,7 @@
 			<th>Sport</th>
 			<th>Event</th>
 			<th>Medal</th>
+			
 		</tr>
 
 		<?php

@@ -9,6 +9,8 @@
 	//include 'insertTableData.php'; 
 
 	include 'connect.inc.php';
+
+
 	
 	//Connect to mySQL server
 	try
@@ -26,23 +28,15 @@
 
 	if (isset($_POST['findAthlete']))			//If the search athlete button has been clicked
 	{
-		//Check if firstname has a value, if not make it a wildcard
-		if(isset($_POST['FirstName']))
-		{
-			$fName = $_POST['FirstName'];
-		}
-		else
-		{
-			$fName = '%';
-		}
 		
+		$fName= $_POST['FirstName'];
 		$lName = $_POST['LastName'];
 		$sportChoice = $_POST['sport'];
 		$countryChoice = $_POST['country'];
 		$medalChoice = $_POST['medal'];
 
 
-		$query = "SELECT athleteID, athleteImage, firstName, lastName, sport, event, medalName, countryName, countryFlagImage
+		$query = "SELECT athleteTableRio.athleteID, athleteImage, firstName, lastName, sport, event, medalName, countryName, countryFlagImage
 				  FROM athleteTableRio LEFT JOIN athleteEventTableRio
 				  ON athleteTableRio.athleteID = athleteEventTableRio.athleteID
 				  LEFT JOIN countryTableRio
@@ -55,35 +49,48 @@
 		
 		if(sizeof($_POST) > 1)
 		{
-			$query .= "WHERE ";
+			$query .= "WHERE athleteTableRio.athleteID >= '0' ";
 
 			if(!empty( $_POST['FirstName']))
 			{
- 				$query .= "firstName = ".$fName." ";
- 			}
-	 		if(!empty( $_POST['LastName']))
+	 			$query .= "AND firstName LIKE \"$fName\" ";
+	 		}
+ 			if(!empty( $_POST['LastName']))
 			{
-	 			$query .= "AND lastName = ".$lName." ";
+	 			$query .= "AND lastName LIKE \"$lName\" ";
 	 		}
 	 		if(!empty( $_POST['LastName']))
 			{
-	 			$query .= "AND sport = ".$sportChoice." ";
+	 			$query .= "AND sport LIKE \"$sportChoice\" ";
 	 		}
 	 		if(!empty( $_POST['country']))
 			{
-	 			$query .= "AND countryName = ".$countryChoice." ";
+	 			$query .= "AND countryName LIKE \"$countryChoice\" ";
 	 		}
 	 		if(!empty( $_POST['medal']))
 			{
-	 			$query .= "AND medalName = ".$medalChoice." ";
+	 			$query .= "AND medalName LIKE \"$medalChoice\" ";
 	 		}
 		}		
+		$query .="ORDER BY lastName, firstName";
+ 		//echo $query;
 
- 		$query .="ORDER BY lastName, firstName";
 
 		$athleteResult = $pdo->query($query);
+		//print_r($athleteResult);
 
-		include 'RioSearchAthlete.html.php';  
+
+		//Query to populate search function
+		$query = "SELECT DISTINCT sport FROM eventTableRio";
+		$allSports = $pdo->query($query);
+
+		$query = "SELECT DISTINCT countryName FROM countryTableRio";
+		$allCountries = $pdo->query($query);
+
+		$query = "SELECT DISTINCT medalName FROM medalTableRio";
+		$allMedals = $pdo->query($query);
+
+		include 'RioAthleteOutput.html.php';
 	}
 
 	//If delete athlete button clicked

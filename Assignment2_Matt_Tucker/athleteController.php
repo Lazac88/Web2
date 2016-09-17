@@ -27,13 +27,28 @@
 	}
 
 	if (isset($_POST['findAthlete']))			//If the search athlete button has been clicked
-	{
-		
+	{		
 		$fName= $_POST['FirstName'];
 		$lName = $_POST['LastName'];
+
 		$sportChoice = $_POST['sport'];
-		$countryChoice = $_POST['country'];
-		$medalChoice = $_POST['medal'];
+		if($sportChoice == 'All Sports')
+		{
+			$sportChoice = '%';
+		}
+
+		$countryChoice = $_POST['country'];		
+		if($countryChoice == 'All Countries')
+		{
+			$countryChoice = '%';
+		}
+
+		$medalChoice = $_POST['medal'];		
+		if($medalChoice == 'All Medals')
+		{
+			$medalChoice = '%';
+		}
+				
 
 
 		$query = "SELECT athleteTableRio.athleteID, athleteImage, firstName, lastName, sport, event, medalName, countryName, countryFlagImage
@@ -59,7 +74,7 @@
 			{
 	 			$query .= "AND lastName LIKE \"$lName\" ";
 	 		}
-	 		if(!empty( $_POST['LastName']))
+	 		if(!empty( $_POST['sport']))
 			{
 	 			$query .= "AND sport LIKE \"$sportChoice\" ";
 	 		}
@@ -77,8 +92,6 @@
 
 
 		$athleteResult = $pdo->query($query);
-		//print_r($athleteResult);
-
 
 		//Query to populate search function
 		$query = "SELECT DISTINCT sport FROM eventTableRio";

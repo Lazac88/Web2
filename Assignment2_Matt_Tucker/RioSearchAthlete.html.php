@@ -19,8 +19,7 @@
   			<li><a href="countryController.php">Search Countries</a></li>
   			<li><a href="addAthlete.html.php">Add Athlete</a></li>
   			<li><a href="addCountry.html.php">Add Countries</a></li>
-  			<li><a href="deleteAthlete.html.php">Delete Athlete</a></li>
-
+  			<li><a href="temp.php">Reset Database</a></li>
 		</ul>
 	</div>
 
@@ -29,8 +28,8 @@
 			$self = htmlentities($_SERVER['PHP_SELF']);
 			echo "<form action= $self method='POST'>"
 		?>
-		First name: <input type="text" name="FirstName" placeholder="First Name">
-		Last name: <input type="text" name="LastName" placeholder="Last Name"><br>
+		First name: <input class="btnSpace" type="text" name="FirstName" placeholder="First Name">
+		Last name: <input class="btnSpace" type="text" name="LastName" placeholder="Last Name"><br>
 
 		<!--List all sport chocies including All Sports-->
 		<select class="btnSpace" name="sport">

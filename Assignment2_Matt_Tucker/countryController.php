@@ -28,12 +28,20 @@
 
 	if (isset($_POST['findCountry']))			//If the search country button has been clicked
 	{
-		$query = "SELECT countryName, countryFlagImage, countryPopulation FROM countryTableRio";
+		$ctry = $_POST['country'];
+		if($ctry == 'All Countries')
+		{
+			$ctry = '%';
+		}
+		$query = "SELECT countryName, countryFlagImage, countryPopulation FROM countryTableRio ";
+		$query .= "WHERE countryName LIKE \"$ctry\" " ;
+		
+
 		$countryDisplay = $pdo->query($query);
-		include 'RioCountryOutput.html.php';
 
 		$query = "SELECT DISTINCT countryName FROM countryTableRio";
 		$allCountries = $pdo->query($query);
+		include 'RioCountryOutput.html.php';		
 	}
 
 	//if the search screen is loaded for the first time

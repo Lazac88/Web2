@@ -19,8 +19,7 @@
   			<li><a href="countryController.php">Search Countries</a></li>
   			<li><a href="addAthlete.html.php">Add Athlete</a></li>
   			<li><a href="addCountry.html.php">Add Countries</a></li>
-  			<li><a href="deleteAthlete.html.php">Delete Athlete</a></li>
-
+  			<li><a href="temp.php">Reset Database</a></li>
 		</ul>
 	</div>
 
@@ -29,8 +28,8 @@
 			$self = htmlentities($_SERVER['PHP_SELF']);
 			echo "<form action= $self method='POST'>"
 		?>
-		First name: <input type="text" name="FirstName" placeholder="First Name">
-		Last name: <input type="text" name="LastName" placeholder="Last Name"><br>
+		First name: <input class="btnSpace" type="text" name="FirstName" placeholder="First Name">
+		Last name: <input class="btnSpace" type="text" name="LastName" placeholder="Last Name"><br>
 
 		<!--List all sport chocies including All Sports-->
 		<select class="btnSpace" name="sport">
@@ -65,8 +64,14 @@
 		</select>
 		
 		<!--Sends User To Output Page with selected value -->
-		<button class="btnSpace" type='submit' name='findAthlete' value='findAthlete'>Find Your Athletes</button>
-		</form>	
+		<button class="btnSpace" type='submit' name='findAthlete' value='findAthlete'>Find Your Athletes</button>		
+		</form>
+		<?php
+			$self = htmlentities($_SERVER['PHP_SELF']);
+			echo "<form action= $self method='POST'>"
+		?>
+		<!--Deletes Athletes From the Database -->
+		<button class="btnSpace" type='submit' name='deleteAthlete' value='deleteAthlete'>Delete Selected Athletes</button>
 		<br>
 		<br>
 	<table>
@@ -87,7 +92,7 @@
 		foreach($athleteResult as $row)
 		{
 			echo "<tr>";
-			echo "<td><input type='checkbox' name='deleteList[]'></td>";
+			echo "<td><input type='checkbox' name='deleteList[]' value='$row[athleteID]'></td>";
 			echo "<td><img src='photos/$row[athleteImage]' /></td>";
 			echo "<td>$row[firstName]</td>";
 			echo "<td>$row[lastName]</td>";
@@ -95,13 +100,14 @@
 			echo "<td>$row[event]</td>";
 			echo "<td>$row[medalName]</td>";
 			echo "<td>$row[countryName]</td>";
-			echo "<td><img src='photos/$row[countryFlagImage]' /></td>";
+			echo "<td><img src='flags/$row[countryFlagImage]' /></td>";
 			echo "</tr>";
 		}
 
 		?>
 
 	</table>
+	</form>
 	</div>
 </body>
 

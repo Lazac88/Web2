@@ -19,8 +19,7 @@
   			<li><a class="active" href="countryController.php">Search Countries</a></li>
   			<li><a href="addAthlete.html.php">Add Athlete</a></li>
   			<li><a href="addCountry.html.php">Add Countries</a></li>
-  			<li><a href="deleteAthlete.html.php">Delete Athlete</a></li>
-
+  			<li><a href="temp.php">Reset Database</a></li>
 		</ul>
 	</div>
 
@@ -60,7 +59,7 @@
 		{
 			echo "<tr>";
 			echo "<td>$row[countryName]</td>";
-			echo "<td><img src='photos/$row[countryFlagImage]' /></td>";
+			echo "<td><img src='flags/$row[countryFlagImage]' /></td>";
 			echo "<td>$row[countryPopulation]</td>";
 			echo "</tr>";
 		}

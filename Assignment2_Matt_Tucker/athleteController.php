@@ -109,7 +109,7 @@
 	//If delete athlete button clicked
 	else if (isset($_POST['deleteAthlete']))
 	{
-		$toDelete = $_POST['athleteDelete'];
+		$toDelete = $_POST['deleteList'];
 
 		foreach ($toDelete as $delete)
 		{
@@ -118,6 +118,16 @@
 			$query = "DELETE FROM athleteTableRio	WHERE athleteID = $delete";
 			$pdo->query($query);
 		}
+
+		$query = "SELECT DISTINCT sport FROM eventTableRio";
+		$allSports = $pdo->query($query);
+
+		$query = "SELECT DISTINCT countryName FROM countryTableRio";
+		$allCountries = $pdo->query($query);
+
+		$query = "SELECT DISTINCT medalName FROM medalTableRio";
+		$allMedals = $pdo->query($query);
+		include 'RioSearchAthlete.html.php';
 	}
 
 	//if the search screen is loaded for the first time

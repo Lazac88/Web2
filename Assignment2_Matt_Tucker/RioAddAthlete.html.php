@@ -25,11 +25,7 @@
 	</div>
 
 	<div class="mainContent"> 
-  		<h2>Rio Olympics Athlete Management System</h2>
-  		<h3>Introduction</h3>
-  		<p>This tool has been developed to allow Olympic management to add, search, and delete athletes from the athlete database.</p>
-  		<p>It will also keep a running tally of medals won and how many medals each country has.</p>
-  		<p>Please use the menu to the left to navigate around the management system.</p>
+  		
 	</div>
 </body>
 

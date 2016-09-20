@@ -17,9 +17,9 @@
   			<li><a href="medalTable.html.php">Medal Table</a></li>
   			<li><a href="athleteController.php">Search Athletes</a></li>
   			<li><a class="active" href="countryController.php">Search Countries</a></li>
-  			<li><a href="addAthlete.html.php">Add Athlete</a></li>
-  			<li><a href="addCountry.html.php">Add Countries</a></li>
-  			<li><a href="temp.php">Reset Database</a></li>
+  			<li><a href="addAthleteController.php">Add Athlete</a></li>
+  			<li><a href="addCountryController.php">Add Countries</a></li>
+  			<li><a href="RioResetHome.php">Reset Database</a></li>
 		</ul>
 	</div>
 

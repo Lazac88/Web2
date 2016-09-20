@@ -25,11 +25,19 @@
 	</div>
 
 	<div class="mainContent"> 
-  		<h2>Rio Olympics Athlete Management System</h2>
-  		<h3>Introduction</h3>
-  		<p>This tool has been developed to allow Olympic management to add, search, and delete athletes from the athlete database.</p>
-  		<p>It will also keep a running tally of medals won and how many medals each country has.</p>
-  		<p>Please use the menu to the left to navigate around the management system.</p>
+  		<?php
+			$self = htmlentities($_SERVER['PHP_SELF']);
+			echo "<form action= $self method='POST'>"
+		?>
+  			<label for="countryName">Country Name:  </label>
+  			<input class="btnSpace" type="text" name="countryName"><br><br>
+  			<label for="countryImageName">Image Name (E.g. "USA.jpg"):  </label>
+  			<input class="btnSpace" type="countryImageName" name="countryImageName"><br><br>
+  			<label for="population">Population: </label>
+  			<input class="btnSpace" type="number" name="population" min="1"><br><br>
+  			<!--Adds Country To the Database -->
+		<button class="btnSpace" type='submit' name='addCountry' value='addCountry'>Add Your Country</button>
+		</form>
 	</div>
 </body>
 

@@ -105,7 +105,7 @@ include 'connect.inc.php';
 
   			$insertQuery = "INSERT INTO athleteEventTableRio(athleteID, eventID, medalID) 
   							VALUES('$temp[0]', '$temp[1]', '$temp[2]')";
-  							echo $insertQuery;
+  							
 			$pdo->exec($insertQuery);
   		}
 		fclose($file);

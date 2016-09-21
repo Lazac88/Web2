@@ -1,3 +1,8 @@
+/*
+Matt Tucker
+Assignment 2
+*/
+
 body
 {
 	margin: 0px;
@@ -125,5 +130,10 @@ button {
 #homeHeading
 {
     color: #0071BB;
+}
+
+.required
+{
+    color: red;
 }
 

@@ -39,9 +39,9 @@
 
 		$query = "SELECT medalID, medalName FROM medalTableRio";
 		$allMedals = $pdo->query($query);
-		include 'issueMedalSuccess.html.php';
+		include 'issueMedalSuccess.html.php';		
 	}
-	else
+	else 									//If the button hasn't been click load the entry screen
 	{
 		$query = "SELECT athleteID, firstName, lastName FROM athleteTableRio";
 		$allAthletes = $pdo->query($query);

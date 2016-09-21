@@ -3,7 +3,7 @@
 	/*
 	Name: Matt Tucker
 	Date: 5th September 2016
-	Assignment 
+	Assignment 2
 	*/
 
 	include 'connect.inc.php';
@@ -74,7 +74,7 @@
 							lastName VARCHAR(20) NOT NULL,
 							firstName VARCHAR(20) NOT NULL,
 							gender VARCHAR(6) NOT NULL,
-							athleteImage VARCHAR(20) NOT NULL,
+							athleteImage VARCHAR(20),
 							countryID INT(6) NOT NULL,						
 
 							PRIMARY KEY(athleteID),

@@ -1,3 +1,10 @@
+<!--
+	Name: Matt Tucker
+	Date: 3rd September 2016
+	Assignment 2
+	-->
+
+
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -39,7 +46,7 @@
 		<button class="btnSpace" type='submit' name='addEvent' value='addEvent'>Add Your Event</button>
 		</form>
 
-		<h2><?php echo "$success";?> was successfully added to the database</h2>
+		<h2><?php echo "$success";?> was successfully added to the database</h2>			<!--if event was successfully added display this -->
 	</div>
 	
 </body>

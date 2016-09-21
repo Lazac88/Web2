@@ -24,15 +24,23 @@
 
 	if (isset($_POST['addEvent']))			//If the add country button has been clicked
 	{
-		$eName = $_POST['eventName'];
-		$eName = clean_data($eName);
-		$sName = $_POST['sportName'];
-		$sName = clean_data($sName);
+		if($_POST['eventName'] != "" && $_POST['sportName'] != "")
+		{
+			$eName = $_POST['eventName'];
+			$eName = clean_data($eName);
+			$sName = $_POST['sportName'];
+			$sName = clean_data($sName);
 
-		$insertQuery = "INSERT INTO eventTableRio(sport, event) VALUES('$sName', '$eName')";
-		$pdo->exec($insertQuery);
-		$success = $eName;
-		include 'EventSuccess.html.php';
+			$insertQuery = "INSERT INTO eventTableRio(sport, event) VALUES('$sName', '$eName')";
+			$pdo->exec($insertQuery);
+			$success = $eName;
+			include 'EventSuccess.html.php';
+		}
+		else
+		{
+			include 'RioAddEvent.html.php';
+		}
+		
 	}
 	else
 	{

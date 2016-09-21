@@ -1,3 +1,9 @@
+<!--
+	Name: Matt Tucker
+	Date: 5th September 2016
+	Assignment 2
+-->
+
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -25,7 +31,7 @@
 		</ul>
 	</div>
 
-	<div class="mainContent"> 
+	<div class="mainContent"> 				<!--Page to show medal was issued successfully-->
   		<?php
 			$self = htmlentities($_SERVER['PHP_SELF']);
 			echo "<form action= $self method='POST'>"

@@ -25,22 +25,45 @@
 
 	if (isset($_POST['addAthlete']))			//If the add athlete button has been clicked
 	{
-		$fName = $_POST['firstName'];
-		$fName = clean_data($fName);
-		$lName = $_POST['lastName'];
-		$lName = clean_data($lName);
-		$gender = $_POST['gender'];
-		$imageName = $_POST['athleteImage'];
-		$imageName = clean_data($imageName);
-		$cID = $_POST['countryID'];
+		if($_POST['firstName'] != "" && $_POST['lastName'] != "" && $_POST['gender'] != "" && $_POST['athleteImage'] != "")
+		{
+			
+			$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES(:lName, :fName, :gender, :imageName, :cID)";
 
-		$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES('$lName', '$fName', '$gender', '$imageName', '$cID')";
-		$pdo->exec($insertQuery);
-		$success = $fName;
+			$preparedStatement = $pdo->prepare($insertQuery);
 
-		$query = "SELECT DISTINCT countryName FROM countryTableRio";
-		$allCountries = $pdo->query($query);
-		include 'AthleteSuccess.html.php';
+			$preparedStatement->bindParam(":lName", $lName);
+			$preparedStatement->bindParam(":fName", $fName);
+			$preparedStatement->bindParam(":gender", $gender);
+			$preparedStatement->bindParam(":imageName", $imageName);
+			$preparedStatement->bindParam(":cID", $cID);
+
+
+
+			$fName = $_POST['firstName'];
+			$fName = clean_data($fName);
+			$lName = $_POST['lastName'];
+			$lName = clean_data($lName);
+			$gender = $_POST['gender'];
+			$imageName = $_POST['athleteImage'];
+			$imageName = clean_data($imageName);
+			$cID = $_POST['countryID'];
+
+			
+			$preparedStatement->execute();
+			$success = $fName;
+
+			$query = "SELECT DISTINCT countryName FROM countryTableRio";
+			$allCountries = $pdo->query($query);
+			include 'AthleteSuccess.html.php';
+		}
+		else
+			{
+				$query = "SELECT DISTINCT countryName, countryID FROM countryTableRio";
+				$allCountries = $pdo->query($query);
+				include 'RioAddAthlete.html.php';
+			}
+		
 	}
 	else
 	{

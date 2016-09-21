@@ -30,6 +30,7 @@
 			echo "<form action= $self method='POST'>"
 		?>
 		<!--List all sport chocies including All Sports-->
+		<label for="country">Country: </label>
 		<select class="btnSpace" name="country">
 			<option></option>
 			<option value='All Countries'>All Countries</option>

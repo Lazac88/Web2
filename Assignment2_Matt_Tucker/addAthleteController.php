@@ -6,7 +6,7 @@
 	*/
 
 	include 'connect.inc.php';
-
+	include 'functions.php';
 
 	
 	//Connect to mySQL server
@@ -26,9 +26,12 @@
 	if (isset($_POST['addAthlete']))			//If the add athlete button has been clicked
 	{
 		$fName = $_POST['firstName'];
+		$fName = clean_data($fName);
 		$lName = $_POST['lastName'];
+		$lName = clean_data($lName);
 		$gender = $_POST['gender'];
 		$imageName = $_POST['athleteImage'];
+		$imageName = clean_data($imageName);
 		$cID = $_POST['countryID'];
 
 		$insertQuery = "INSERT INTO athleteTableRio(lastName, firstName, gender, athleteImage, countryID) VALUES('$lName', '$fName', '$gender', '$imageName', '$cID')";

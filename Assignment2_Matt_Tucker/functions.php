@@ -1,8 +1,9 @@
 <?php
-
-	function stripInput($input)
+	function clean_data($data)
 	{
-		echo str_replace('"', '', $input);
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		return $data;
 	}
-
 ?>

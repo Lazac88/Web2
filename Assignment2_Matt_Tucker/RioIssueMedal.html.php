@@ -29,7 +29,9 @@
   		<?php
 			$self = htmlentities($_SERVER['PHP_SELF']);
 			echo "<form action= $self method='POST'>"
-		?>  			
+		?> 
+
+		<label for="athleteID">Choose Athlete:  </label> 			
   		<select class="btnSpace" name="athleteID">
 			<?php
 				foreach ($allAthletes as $row) 
@@ -39,6 +41,7 @@
 			?>
 		</select>
 
+		<label for="eventID">Choose Event:  </label>	
 		<select class="btnSpace" name="eventID">
 			<?php
 				foreach ($allEvents as $row) 
@@ -47,6 +50,8 @@
 				}
 			?>
 		</select>
+
+		<label for="medalID">Choose Medal:  </label>
 		<select class="btnSpace" name="medalID">
 			<?php
 				foreach ($allMedals as $row) 
@@ -55,7 +60,7 @@
 				}
 			?>
 		</select>
-
+		<br><br>
   			<!--Adds Athlete To the Database -->
 		<button class="btnSpace" type='submit' name='issueMedal' value='issueMedal'>Issue Medal</button>
 		</form>

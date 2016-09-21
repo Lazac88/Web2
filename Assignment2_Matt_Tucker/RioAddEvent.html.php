@@ -31,7 +31,7 @@
 			echo "<form action= $self method='POST'>"
 		?>
   			<label for="eventName">Event Name:  </label>
-  			<input class="btnSpace" type="text" name="eventName"><br><br>
+  			<input class="btnSpace" type="text" name="eventName">
   			<label for="sportName">Sport Name:  </label>
   			<input class="btnSpace" type="text" name="sportName"><br><br>
   			

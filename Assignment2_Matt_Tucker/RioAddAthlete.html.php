@@ -31,13 +31,13 @@
 			echo "<form action= $self method='POST'>"
 		?>
   			<label for="firstName">First Name:  </label>
-  			<input class="btnSpace" type="text" name="firstName"><br><br>
+  			<input class="btnSpace" type="text" name="firstName">
   			<label for="lastName">Last Name:  </label>
-  			<input class="btnSpace" type="text" name="lastName"><br><br>
-  			<label for="gender">Gender: </label>
-  			<input class="btnSpace" type="text" name="gender"><br><br>
+  			<input class="btnSpace" type="text" name="lastName">
+  			<input type="radio" name="gender" value="m"> Male:
+  			<input type="radio" name="gender" value="f"> Female: <br><br>
   			<label for="athleteImage">Athlete Image: </label>
-  			<input class="btnSpace" type="text" name="athleteImage"><br><br>
+  			<input class="btnSpace" type="text" name="athleteImage">
   			<label for="countryID">Country:  </label>
   			<select class="btnSpace" name="countryID">
 			<?php

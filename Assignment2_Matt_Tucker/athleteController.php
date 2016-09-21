@@ -9,7 +9,7 @@
 	//include 'insertTableData.php'; 
 
 	include 'connect.inc.php';
-
+	include 'functions.php';
 
 	
 	//Connect to mySQL server
@@ -27,9 +27,14 @@
 	}
 
 	if (isset($_POST['findAthlete']))			//If the search athlete button has been clicked
-	{		
-		$fName= $_POST['FirstName'];
+	{	
+
+		$fName = $_POST['FirstName'];
+		$fName = clean_data($fName);
+		
+
 		$lName = $_POST['LastName'];
+		$lName = clean_data($lName);
 
 		$sportChoice = $_POST['sport'];
 		if($sportChoice == 'All Sports')
@@ -144,3 +149,8 @@
 
 		include 'RioSearchAthlete.html.php';
 	}
+
+	
+	
+
+?>

@@ -29,7 +29,7 @@
 		$medalID = $_POST['medalID'];
 
 		$insertQuery = "INSERT INTO athleteEventTableRio(athleteID, eventID, medalID) VALUES('$athleteID', '$eventID', '$medalID')";
-		$pdo->exec($insertQuery);
+		$pdo->exec($insertQuery) or die($pdo->errorInfo());
 
 		$query = "SELECT athleteID, firstName, lastName FROM athleteTableRio";
 		$allAthletes = $pdo->query($query);

@@ -33,6 +33,7 @@
 		Last name: <input class="btnSpace" type="text" name="LastName" placeholder="Last Name"><br>
 
 		<!--List all sport chocies including All Sports-->
+		<label for="sport">Sport: </label>
 		<select class="btnSpace" name="sport">
 			<option></option>
 			<option value='All Sports'>All Sports</option>
@@ -43,6 +44,9 @@
 				}
 			?>
 		</select>
+
+
+		<label for="country">Country: </label>
 		<select class="btnSpace" name="country">
 			<option></option>
 			<option value='All Countries'>All Countries</option>
@@ -53,6 +57,8 @@
 				}
 			?>
 		</select>
+
+		<label for="medal">Medal: </label>
 		<select class="btnSpace" name="medal">
 		<option></option>
 			<option value='All Medals'>All Medals</option>

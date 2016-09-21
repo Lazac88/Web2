@@ -27,7 +27,9 @@
 	if (isset($_POST['addCountry']))			//If the add country button has been clicked
 	{
 		$cName = $_POST['countryName'];
+		$cName = clean_data($cName);
 		$cImageName = $_POST['countryImageName'];
+		$cImageName = clean_data($cImageName);
 		$cPopulation = $_POST['population'];
 
 		$insertQuery = "INSERT INTO countryTableRio(countryName, countryFlagImage, countryPopulation) VALUES('$cName', '$cImageName', '$cPopulation')";

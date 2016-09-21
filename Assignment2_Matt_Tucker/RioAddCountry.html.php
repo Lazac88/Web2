@@ -31,9 +31,9 @@
 			echo "<form action= $self method='POST'>"
 		?>
   			<label for="countryName">Country Name:  </label>
-  			<input class="btnSpace" type="text" name="countryName"><br><br>
+  			<input class="btnSpace" type="text" name="countryName">
   			<label for="countryImageName">Image Name (E.g. "USA.jpg"):  </label>
-  			<input class="btnSpace" type="text" name="countryImageName"><br><br>
+  			<input class="btnSpace" type="text" name="countryImageName">
   			<label for="population">Population: </label>
   			<input class="btnSpace" type="number" name="population" min="1"><br><br>
   			<!--Adds Country To the Database -->

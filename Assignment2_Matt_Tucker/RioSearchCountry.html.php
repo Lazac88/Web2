@@ -14,11 +14,12 @@
 	<div class="menu">
 		<ul>
   			<li><a href="RioHome.html">Home</a></li>
-  			<li><a href="medalTable.html.php">Medal Table</a></li>
   			<li><a href="athleteController.php">Search Athletes</a></li>
   			<li><a class="active"  href="countryController.php">Search Countries</a></li>
   			<li><a href="addAthleteController.php">Add Athlete</a></li>
   			<li><a href="addCountryController.php">Add Countries</a></li>
+  			<li><a href="addEventController.php">Add Event</a></li>
+  			<li><a href="issueMedalController.php">Issue Medal</a></li>
   			<li><a href="RioResetHome.php">Reset Database</a></li>
 		</ul>
 	</div>

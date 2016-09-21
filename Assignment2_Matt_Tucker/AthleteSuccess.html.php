@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-	<title>Rio Olympics Home</title>
+	<title>Rio Olympics Add Athlete</title>
 	<link rel="stylesheet" type="text/css" href="RioStyle.css" /> 
 	<meta charset="UTF-8">
 </head>
@@ -51,8 +51,10 @@
   			<!--Adds Athlete To the Database -->
 		<button class="btnSpace" type='submit' name='addAthlete' value='addAthlete'>Add Your Athlete</button>
 		</form>
+
+		<h2><?php echo "$success";?> was successfully added to the database</h2>
 	</div>
-	</div>
+	
 </body>
 
 </html>

@@ -74,7 +74,7 @@
 							lastName VARCHAR(20) NOT NULL,
 							firstName VARCHAR(20) NOT NULL,
 							gender VARCHAR(6) NOT NULL,
-							athleteImage VARCHAR(20),
+							athleteImage VARCHAR(20) NOT NULL,
 							countryID INT(6) NOT NULL,						
 
 							PRIMARY KEY(athleteID),

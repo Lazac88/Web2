@@ -7,8 +7,6 @@
 
 	include 'connect.inc.php';
 	include 'functions.php';
-
-
 	
 	//Connect to mySQL server
 	try
@@ -24,19 +22,18 @@
 		exit();
 	}
 
-	if (isset($_POST['addCountry']))			//If the add country button has been clicked
+	if (isset($_POST['addEvent']))			//If the add country button has been clicked
 	{
-		$cName = $_POST['countryName'];
-		$cImageName = $_POST['countryImageName'];
-		$cPopulation = $_POST['population'];
+		$eName = $_POST['eventName'];
+		$sName = $_POST['sportName'];
 
-		$insertQuery = "INSERT INTO countryTableRio(countryName, countryFlagImage, countryPopulation) VALUES('$cName', '$cImageName', '$cPopulation')";
+		$insertQuery = "INSERT INTO eventTableRio(sport, event) VALUES('$sName', '$eName')";
 		$pdo->exec($insertQuery);
-		$success = $cName;
-		include 'Success.html.php';
+		$success = $eName;
+		include 'EventSuccess.html.php';
 	}
 	else
 	{
-		include 'RioAddCountry.html.php';
+		include 'RioAddEvent.html.php';
 	}
 ?>

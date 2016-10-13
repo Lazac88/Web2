@@ -21,18 +21,20 @@ session_start();
 		$userName = $_SESSION['userName'];
 	}
 
-	if (isset($_POST['userPassword']))
+	if (isset($_POST['password']))
 	{
-		$userPassword = clean_data($_POST['userPassword']);
+		$userPassword = clean_data($_POST['password']);
 	}
-	else if (isset($_SESSION['userPassword']))
+	else if (isset($_SESSION['password']))
 	{
-		$userPassword = $_SESSION['userPassword'];
+		$userPassword = $_SESSION['password'];
 	}
+	//echo $userPassword;
+	//echo $userName;
 
 	if(!isset($userName))
 	{
-		include 'login.html';
+		include 'login.html.php';
 		exit;
 	}
 	else
@@ -42,7 +44,7 @@ session_start();
 		$stmt = $pdo->prepare($selectQuery);
 		$stmt->bindValue(':name', $userName);
 		$stmt->execute();
-		$row = stmt->fetch();
+		$row = $stmt->fetch();
 		$count=$stmt->rowCount();
 
 		//retrieve the number of rows that wull be returned
@@ -53,11 +55,12 @@ session_start();
 			if(crypt($userPassword, $row['password']) === $row['password'])
 			{
 				$_SESSION['userName'] = $userName;
+				$_SESSION['password'] = $userPassword;
 			}
 			else
 			{
 				echo("<h1>Password Wrong</h1>");
-				include 'login.html';
+				include 'login.html.php';
 				exit;
 			}
 		}

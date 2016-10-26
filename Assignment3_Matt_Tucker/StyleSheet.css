@@ -21,6 +21,14 @@ input {
   	margin-top: 10px;
 }
 
+.error
+{
+	font-size: 16px;
+	display: inline-block;
+	margin-top: 10px;
+	color: red;
+}
+
 #frontBanner
 {
 	width: 100%;
@@ -71,7 +79,7 @@ input {
 .alignFormCenter
 {
 	margin: 0 auto;
-	width: 400px;
+	width: 600px;
 }
 
 .cornerButtons

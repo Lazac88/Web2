@@ -5,6 +5,8 @@
 	Date: 11/10/16
 	Week 11 - Session Management
 */
+	//Put secret code here to hide from nosey people
+	$secret = "IN612";
 
 	//Cleans inputted data
 	function clean_data($data)

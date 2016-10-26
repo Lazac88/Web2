@@ -47,7 +47,7 @@ session_start();
 		$row = $stmt->fetch();
 		$count=$stmt->rowCount();
 
-		//retrieve the number of rows that wull be returned
+		//retrieve the number of rows that will be returned
 		if($count>0)
 		{
 			//Hash the password with its hash as the salt retuirns the same hash

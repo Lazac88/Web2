@@ -6,7 +6,7 @@
 	Week 11 - Session Management
 */
 	//Put secret code here to hide from nosey people
-	$secret = "IN612";
+	$secret = "motivateme";
 
 	//Cleans inputted data
 	function clean_data($data)
@@ -18,7 +18,7 @@
 	}
 
 	//Adds user to database
-	function doInsert($name, $password, $email, $pdo)
+	function doInsert($fName, $lName, $email, $height, $password, $pdo)
 	{
 		//A higher "cost" is more secure but consumes more processing power
 		$cost = 10;
@@ -34,7 +34,7 @@
 		$hash = crypt($password, $salt);
 		//echo("$hash <br>");
 
-		$insertQuery = "INSERT INTO tblUser (userName, userPassword, userEmail) VALUES ('$name', '$hash', '$email')";
+		$insertQuery = "INSERT INTO tblUser (firstName, lastName, email, height, userPassword) VALUES ('$fName', '$lName', '$email', '$height', '$hash')";
 		$pdo->exec($insertQuery);
 	}
 ?>

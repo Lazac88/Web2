@@ -25,14 +25,14 @@
 				echo "<form action= $self method='POST'>"
 				?>
 			<div class="alignFormCenter">
-
+				<?php echo (" <span id='registationSuccessful'>$registrationSuccessful </span><br><br>"); ?>
 				<!--Using the php in the input to refill the form if it fails. Will likely strip the input and save values to different variables once my controller is built-->
 				<label>Email:</label> <input type="text" name="emailLogin"/><br>
   				<label>Password:</label> <input type="password" name="passwordLogin"/><br>
   				
   				<div class="clearFloat"></div>
   				<br>
-  				<input id="loginBtn" type="submit" name="RegisterButton" value="Login">
+  				<input id="loginBtn" type="submit" name="LoginButton" value="Login">
   			</div>
 			</form>
 		</div>

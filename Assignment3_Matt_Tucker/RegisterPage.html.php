@@ -27,15 +27,21 @@
 			<div class="alignFormCenter">
 			<!--Using the php in the input to refill the form if it fails. Will likely strip the input and save values to different variables once my controller is built-->
 			<?php 
-				echo (
-						<label>First name:</label> <input type='text' name='fName' value='$fName'/><span class='error'>* '$fNameErr'</span><br>
-		  				<label>Last name:</label> <input type='text' name='lName' value='lName'/><span class='error'>* '$lNameErr'</span><br>
-		  				<label>Email:</label> <input type='text' name='email' value='$email'/><span class='error'>* '$emailErr'</span><br>
-		  				<label>Height(cm):</label> <input type='number' name='height' value='$height'/><span class='error'>* '$heightErr'</span><br>
-		  				<label>Password:</label> <input type='password' name='password1'><span class='error'>* '$passwordErr'</span><br>
-		  				<label>Repeat Password:</label> <input type='password' name='password2'><br><span class='error'>*</span>
-		  				<label>Secret Code:</label> <input type='password' name='secretCode'><span class='error'>*'$secretCodeErr'</span><br>
-		  			);
+				
+				echo ("	<label>First name:</label> <input type='text' name='fName' value='$fName'/> <span class='error'>* $fNameErr</span> <br> ");
+
+		  		echo ("	<label>Last name:</label> <input type='text' name='lName' value='$lName'/> <span class='error'>* $lNameErr</span> <br> ");
+
+		  		echo ("	<label>Email:</label> <input type='text' name='email' value='$email'/> <span class='error'>* $emailErr</span> <br> ");
+
+		  		echo ("	<label>Height(cm):</label> <input type='number' name='height' value='$height'/> <span class='error'>* $heightErr</span> <br> ");
+
+		  		echo ("	<label>Password:</label> <input type='password' name='password1'><span class='error'>* $passwordErr</span> <br> ");
+
+		  		echo ("	<label>Repeat Password:</label> <input type='password' name='password2'> <span class='error'>*</span> <br> ");
+
+		  		echo ("	<label>Secret Code:</label> <input type='text' name='secretCode'> <span class='error'>*$secretCodeErr</span> <br> ");
+		  			
 			?>
 				
   				<div class="clearFloat"></div>

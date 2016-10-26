@@ -1,4 +1,5 @@
 <?php
+session_start();
 	/*
 	Name: Matt Tucker
 	Date: 3rd September 2016
@@ -9,6 +10,9 @@
 	include 'connectToServer.php';
 	include 'functions.php';
 
+	//set global variables
+	$registrationSuccessful = "";
+
 	if(isset($_POST['Login']))
 	{
 		include 'LoginPage.html.php';
@@ -16,14 +20,12 @@
 
 	else if(isset($_POST['Register']))
 	{
+		$fNameErr = $lNameErr = $emailErr = $heightErr = $passwordErr = $secretCodeErr = "";
+		$fName = $lName = $email = $height = $password = "";
 		include 'RegisterPage.html.php';
-	}
-	else
-	{
-		include 'LandingPage.html.php';
-	}
+	}	
 
-	if(isset($_POST['RegisterButton']))
+	else if(isset($_POST['RegisterButton']))
 	{
 		//Define regular expressions
 		$firstNameCriteria = "(^[a-zA-Z]{2,}$)";
@@ -84,6 +86,21 @@
 				$emailErr = "Email Not Valid<br>";
 				$dataCorrect = false;
 			}
+
+			//if email already used....
+			//work out if the email is in the table
+			$selectQuery = "SELECT * FROM tblUser WHERE (email = :email) ";
+			$stmt = $pdo->prepare($selectQuery);
+			$stmt->bindValue(':email', $email);
+			$stmt->execute();
+			$row = $stmt->fetch();
+			$count=$stmt->rowCount();
+
+			if($count > 0)		//i.e. if there is an entry of that email
+			{
+				$emailErr = "Email already exists<br>";
+				$dataCorrect = false;
+			}
 		}
 
 		//Check height for empty post
@@ -112,7 +129,7 @@
 		else
 		{
 			//Check if passwords don't match
-			if(!$_POST["password1"] == $_POST["password2"])
+			if($_POST["password1"] !== $_POST["password2"])
 			{
 				$passwordErr = "Passwords Do Not Match";
 				$dataCorrect = false;
@@ -120,11 +137,11 @@
 			//If passwords do match...
 			else
 			{
-				$password = $_POST["password1"];
+				$password = clean_data($_POST["password1"]);
 				//If passwords match, check to see if password matches password criteria
 				if(!preg_match($passwordCriteria, $password))
 				{
-					$passwordErr = "Password not valid. Can only contain alphanumeric characters and the following special characters: @ # $ % <br>";
+					$passwordErr = "Password not valid. Can only contain alphanumeric characters and the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
 					$dataCorrect = false;
 				}
 			}
@@ -148,8 +165,10 @@
 		if($dataCorrect)
 		{
 			//add person to database
-			//start session
-			//send to home page
+			doInsert($fName, $lName, $email, $height, $password, $pdo);
+			$registrationSuccessful = "Registration Was Successful";
+			//send to login page
+			include 'LoginPage.html.php';
 		}
 		else
 		{
@@ -157,6 +176,74 @@
 			exit();
 		}
 
+	}
+
+	//When Login button is clicked
+	else if(isset($_POST['LoginButton']))
+	{
+		$successLogin = true;
+		$loginErr = $passwordErr = "";
+
+		if (isset($_POST['emailLogin']))
+		{
+			$email = clean_data($_POST['emailLogin']);
+		}
+		else
+		{
+			$successfulLogin = false;
+			$loginError = "Please enter email";
+		}
+
+		if (isset($_POST['passwordLogin']))
+		{
+			$userPassword = clean_data($_POST['passwordLogin']);
+		}
+		else
+		{
+			$successfulLogin = false;
+			$passwordErr = "Please enter password";
+		}
+		
+		if($successfulLogin)
+		{
+			//work out if the email is in the table
+			$selectQuery = "SELECT * FROM tblUser WHERE (email = :email) ";
+			$stmt = $pdo->prepare($selectQuery);
+			$stmt->bindValue(':email', $email);
+			$stmt->execute();
+			$row = $stmt->fetch();
+			$count=$stmt->rowCount();
+
+			//retrieve the number of rows that will be returned
+			if($count>0)
+			{
+				//Hash the password with its hash as the salt returns the same hash
+							//from POST     //from database       //from database
+				if(crypt($userPassword, $row['password']) === $row['password'])
+				{
+					$_SESSION['userID'] = $userID;
+					$_SESSION['fName'] = $row['fName'];
+					include 'siteController.html.php';
+				}
+				else
+				{
+					echo("<h1>Login Unsuccessful</h1>");
+					include 'LoginPage.html.php';
+					exit();
+				}
+			}
+			else
+			{
+				$loginErr = "Login Unsuccessful";
+				exit();
+			}
+		}
+		
+	}
+
+	else
+	{
+		include 'LandingPage.html.php';
 	}
 
 ?>

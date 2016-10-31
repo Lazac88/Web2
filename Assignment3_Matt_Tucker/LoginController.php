@@ -181,7 +181,7 @@ session_start();
 	//When Login button is clicked
 	else if(isset($_POST['LoginButton']))
 	{
-		$successLogin = true;
+		$successfulLogin = true;
 		$loginErr = $passwordErr = "";
 
 		if (isset($_POST['emailLogin']))
@@ -219,11 +219,13 @@ session_start();
 			{
 				//Hash the password with its hash as the salt returns the same hash
 							//from POST     //from database       //from database
-				if(crypt($userPassword, $row['password']) === $row['password'])
+				if(crypt($userPassword, $row['userPassword']) === $row['userPassword'])
 				{
-					$_SESSION['userID'] = $userID;
+					$_SESSION['userID'] = $row['userID'];
 					$_SESSION['fName'] = $row['fName'];
-					include 'siteController.html.php';
+					//echo("About to hit site controller");
+					header("Location: siteController.php");
+    				exit;
 				}
 				else
 				{

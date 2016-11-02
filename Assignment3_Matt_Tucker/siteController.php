@@ -30,6 +30,8 @@ session_start();
 	    }
 	    if ($link == '2')
 	    {
+	    	$selectString = "SELECT * FROM tblActivity";
+			$activityResult = $pdo->query($selectString);
 	        include 'enterWorkout.html.php';
 	        $_GET['link'] = -1;
 	        exit();

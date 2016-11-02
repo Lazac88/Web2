@@ -9,6 +9,8 @@
 	include 'connectToServer.php';
 
 	$userID = $_SESSION['userID'];
+
+	//Grab all entries from tblActivity and tblWorkout for current user to add to calendar
 	$selectString = "SELECT * FROM tblActivity
 					 LEFT JOIN tblWorkout ON tblActivity.activityID = tblWorkout.activityID
 					 WHERE userID = '$userID'";
@@ -24,6 +26,4 @@
 	}
 
 	echo json_encode($events);
-
-
 ?>

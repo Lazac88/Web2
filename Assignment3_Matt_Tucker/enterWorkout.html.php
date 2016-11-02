@@ -38,6 +38,9 @@
 					}
 				?>
 			</select>
+			<br><br>
+			<a href="?link=6" id="addActivity" name="addActivity">+Add Activity</a>
+
 
   		</div>
 	</div>

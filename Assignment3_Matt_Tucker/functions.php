@@ -37,4 +37,17 @@
 		$insertQuery = "INSERT INTO tblUser (firstName, lastName, email, height, userPassword) VALUES ('$fName', '$lName', '$email', '$height', '$hash')";
 		$pdo->exec($insertQuery);
 	}
+
+	function findActivities($pdo)
+	{
+		$selectString = "SELECT * FROM tblActivity";
+		$activityResult = $pdo->query($selectString);
+		return $activityResult;
+	}
+
+	function addActivity($accName, $colour, $pdo)
+	{
+		$insertQuery = "INSERT INTO tblActivity (activityName, activityColour) VALUES ('$accName', '$colour')";
+		$pdo->exec($insertQuery);
+	}
 ?>

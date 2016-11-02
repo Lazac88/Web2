@@ -18,6 +18,18 @@ session_start();
     	header("Location: LoginController.php");
     	exit();
     }
+    
+    else if(isset($_POST['logoutBtn']))
+    {
+    	// remove all session variables
+		session_unset(); 
+
+		// destroy the session 
+		session_destroy();
+
+		header("Location: LoginController.php");
+	    exit();
+    }
 
     else if(isset($_POST['backActivityBtn']))
     {
@@ -60,9 +72,9 @@ session_start();
 			$activityResult = findActivities($pdo);
 			foreach ($activityResult as $row) 
 			{	
-				$name = $row[activityName];			
-				$comparision = strcmp($name, $accName);
-				if($comparision != 0)
+				$name = $row['activityName'];			
+				//$comparision = strcmp($name, $accName);
+				if($name == $actName)
 				{
 					$actNameErr = "Activity Already Exists";
 					$dataCorrect = false;
@@ -82,6 +94,22 @@ session_start();
 			exit();
 		}
     	
+    }
+
+    else if (isset($_POST['submitWorkoutBtn']))
+    {
+    	$userID = $_SESSION['userID'];
+    	$activityID = $_POST['activityResult'];    	
+    	$workoutDate = $_POST['datepicker'];
+    	$workoutDate = date_format($workoutDate, "Y/m/d");
+    	$workoutDuration = $_POST['workoutDuration'];
+    	$workoutComment = $_POST['workoutComment'];
+    	$workoutComment = clean_data($workoutComment);
+
+    	addWorkout($userID, $activityID, $workoutDate, $workoutDuration, $workoutComment, $pdo);
+    	include 'homePage.html.php';
+    	exit();
+
     }
 
 

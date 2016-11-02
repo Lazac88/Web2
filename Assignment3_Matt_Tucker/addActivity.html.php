@@ -45,7 +45,7 @@
 				$self = htmlentities($_SERVER['PHP_SELF']);
 				echo "<form action= $self method='POST'>"
 			?>
-			<input id="backActivityBtn" type="submit" name="backButton" value="Back">
+			<input id="backActivityBtn" type="submit" name="backActivityBtn" value="Back">
 			</form>
   		</div>
 	</div>

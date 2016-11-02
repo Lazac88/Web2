@@ -50,4 +50,10 @@
 		$insertQuery = "INSERT INTO tblActivity (activityName, activityColour) VALUES ('$accName', '$colour')";
 		$pdo->exec($insertQuery);
 	}
+
+	function addWorkout($userID, $activityID, $workoutDate, $workoutDuration, $workoutComment, $pdo)
+	{
+		$insertQuery = "INSERT INTO tblWorkout (userID, activityID, workoutDate, workoutMinutes, workoutComments) VALUES ('$userID', '$activityID', '$workoutDate', '$workoutDuration', '$workoutComment')";
+		$pdo->exec($insertQuery);
+	}
 ?>

@@ -12,6 +12,12 @@
 <body>
 	
 	<header>
+		<?php
+			$self = htmlentities($_SERVER['PHP_SELF']);
+			echo "<form action= $self method='POST'>"
+		?>
+			<input id="logoutBtn" type="submit" name="logoutBtn" value="Logout">
+			</form>
 		<H1>Exercise Tracker</H1>
 	</header>
 
@@ -28,18 +34,35 @@
 	<div class="mainContent">
 		<div class="workoutEntryCenter">
   			<h2 id="workoutHeading">Enter Workout</h2>
-  			<label>Choose Activity</label>
-  			<br><br>
-  			<select class="" name="activityResult">
-				<?php
-					foreach ($activityResult as $row) 
-					{				
-						echo "<option value=\"$row[activityID]\">$row[activityName]</option>";
-					}
-				?>
-			</select>
-			<br><br>
-			<a href="?link=6" id="addActivity" name="addActivity">+Add Activity</a>
+  			<?php
+				$self = htmlentities($_SERVER['PHP_SELF']);
+				echo "<form action= $self method='POST'>"
+			?>
+	  			<label>Choose Activity</label>
+	  			<br><br>
+	  			<select class="" name="activityResult">
+					<?php
+						foreach ($activityResult as $row) 
+						{				
+							echo "<option value=\"$row[activityID]\">$row[activityName]</option>";
+						}
+					?>
+				</select>
+				<br><br>
+				<a href="?link=6" id="addActivity" name="addActivity">+Add Activity</a><br>
+				<label>Duration in minutes (maximum 240):</label>
+				<input type="number"  name="workoutDuration" min="1" max="240">
+				<br><br>
+				<label>Date:</label><input type="text" name="datepicker" id="datepicker">
+				<br><br><br>
+				<label>Comments:</label>
+				<textarea name="workoutComment" rows="6" cols="50">
+						
+				</textarea>
+				<br><br>
+	 			<input id="submitWorkoutBtn" type="submit" name="submitWorkoutBtn" value="Submit Workout">
+			</form>	
+
 
 
   		</div>

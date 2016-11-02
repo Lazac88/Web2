@@ -11,7 +11,7 @@ label
     float: left;
     clear: left;
     width: 150px;
-    text-align: right;
+    /*text-align: right;*/
     margin-top: 10px;
 }
 
@@ -68,6 +68,12 @@ input {
 	height: 40px;
 	width: 80px;
 	margin-left: 160px;
+}
+
+#logoutBtn
+{
+	float: right;
+	clear: all;
 }
 
 #registationSuccessful

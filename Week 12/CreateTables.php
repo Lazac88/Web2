@@ -11,10 +11,12 @@
 	//Delete Tables
 	try
 	{
-		$dropQuery = "DROP TABLE IF EXISTS tblUser";
+		
+		$dropQuery = "DROP TABLE IF EXISTS tblActivity2";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS tblActivity";
+		$dropQuery = "DROP TABLE IF EXISTS tblUser2";
 		$pdo->exec($dropQuery);
+		
 
 	}
 	catch(PDOException $e)
@@ -27,7 +29,7 @@
 	//Create the user table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE tblUser
+		$createQuery = "CREATE TABLE tblUser2
 						(
 							userID INT(6) NOT NULL AUTO_INCREMENT,
 							userName VARCHAR(20) NOT NULL,
@@ -48,7 +50,7 @@
 	//Create the athlete table in the database
 	try
 	{
-		$createQuery = "CREATE TABLE tblActivity
+		$createQuery = "CREATE TABLE tblActivity2
 						(
 							activityID INT(6) NOT NULL AUTO_INCREMENT,
 							activityDate DATE NOT NULL,

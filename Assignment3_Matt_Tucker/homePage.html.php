@@ -18,9 +18,9 @@
 				events: "Workouts.php"
 			})
 		});
-	
-
 </script>
+
+
 	<link rel="stylesheet" type="text/css" href="StyleSheet.css" /> 
 	<meta charset="UTF-8">
 </head>
@@ -44,6 +44,9 @@
   		<h2 id="homeHeading">Workout Calendar</h2>
   		<div id='calendar'></div>
 	</div>
+<?php
+	include 'Workouts.php';
+?>
 </body>
 
 </html>

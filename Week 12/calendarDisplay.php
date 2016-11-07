@@ -18,9 +18,8 @@
 				events: "events.php"
 			})
 		});
-	
-
 </script>
+
 <style type='text/css'>
 
 	body {
@@ -41,6 +40,9 @@
 </head>
 <body>
 <div id='calendar'></div>
+<?php
+	include 'events.php';
+?>
 </body>
 
 </html>

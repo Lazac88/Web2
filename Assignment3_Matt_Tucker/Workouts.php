@@ -1,19 +1,15 @@
 <?php
-	/*
-	Name: Matt Tucker
-	Date: 20th October
-	*/
+if(!isset($_SESSION)){session_start();}		//Check if session has start, if not then start
 
-	include 'functions.php';
 	include 'connect.inc.php';
 	include 'connectToServer.php';
 
-	$userID = $_SESSION['userID'];
+	$userID = $_SESSION['userID'];		//Save userId as a variable
 
 	//Grab all entries from tblActivity and tblWorkout for current user to add to calendar
 	$selectString = "SELECT * FROM tblActivity
 					 LEFT JOIN tblWorkout ON tblActivity.activityID = tblWorkout.activityID
-					 WHERE userID = '$userID'";
+					 WHERE userID = $userID";
 	$result = $pdo->query($selectString);
 	$events = array();
 	foreach($result as $row)

@@ -8,14 +8,18 @@
 	include 'connect.inc.php';
 	include 'connectToServer.php';
 
-	$selectString = "SELECT * FROM tblActivity WHERE userID = 1";
+	//$selectString = "SELECT * FROM tblActivity2 WHERE userID = 1";
+	$selectString = "SELECT * FROM tblActivity
+					 LEFT JOIN tblWorkout ON tblActivity.activityID = tblWorkout.activityID
+					 WHERE userID = 1";
 	$result = $pdo->query($selectString);
 	$events = array();
 	$color = "green";
 	foreach($result as $row)
 	{
 		$eventArray['title'] = $row['activityName'];
-		$eventArray['start'] = $row['activityDate'];
+		//$eventArray['start'] = $row['activityDate'];
+		$eventArray['start'] = $row['workoutDate'];
 
 		//Switch here to give each activityName a different colour
 		switch ($row['activityName']) 
@@ -31,7 +35,8 @@
 		        break;
 		}
 		//temp colour
-		$eventArray['color'] = $color;
+		//$eventArray['color'] = $color;
+		$eventArray['color'] = $row['activityColour'];
 		$events[] = $eventArray;
 	}
 

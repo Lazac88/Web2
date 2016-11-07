@@ -101,7 +101,8 @@ session_start();
     	$userID = $_SESSION['userID'];
     	$activityID = $_POST['activityResult'];    	
     	$workoutDate = $_POST['datepicker'];
-    	$workoutDate = date_format($workoutDate, "Y/m/d");
+    	$workoutDate = strtotime($workoutDate);			//Convert from string to time
+    	$workoutDate = date('Y-m-d', $workoutDate);  	//Convert into correct format
     	$workoutDuration = $_POST['workoutDuration'];
     	$workoutComment = $_POST['workoutComment'];
     	$workoutComment = clean_data($workoutComment);

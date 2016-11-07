@@ -32,7 +32,7 @@
 		$hash = crypt($password, $salt);
 		//echo("$hash <br>");
 
-		$insertQuery = "INSERT INTO tblUser (userName, userPassword, userEmail) VALUES ('$name', '$hash', '$email')";
+		$insertQuery = "INSERT INTO tblUser2 (userName, userPassword, userEmail) VALUES ('$name', '$hash', '$email')";
 		$pdo->exec($insertQuery);
 	}
 ?>

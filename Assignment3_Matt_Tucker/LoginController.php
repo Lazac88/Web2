@@ -184,10 +184,12 @@ session_start();
 		$successfulLogin = true;
 		$loginErr = $passwordErr = "";
 
-		
+
+		$email = $_POST['emailLogin'];
+		echo (isset($_POST['emailLogin']));
 		echo ($_POST['emailLogin']);
 		echo ($_POST['passwordLogin']);
-		if (isset($_POST['emailLogin']))
+		if ($email != "")
 		{			
 			$email = clean_data($_POST['emailLogin']);
 		}

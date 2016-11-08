@@ -27,6 +27,12 @@
 <body>
 	
 	<header>
+	<?php
+			$self = htmlentities($_SERVER['PHP_SELF']);
+			echo "<form action= $self method='POST'>"
+		?>
+			<input id="logoutBtn" type="submit" name="logoutBtn" value="Logout">
+			</form>
 		<H1>Exercise Tracker</H1>
 	</header>
 
@@ -44,9 +50,6 @@
   		<h2 id="homeHeading">Workout Calendar</h2>
   		<div id='calendar'></div>
 	</div>
-<?php
-	include 'Workouts.php';
-?>
 </body>
 
 </html>

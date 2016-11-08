@@ -184,12 +184,16 @@ session_start();
 		$successfulLogin = true;
 		$loginErr = $passwordErr = "";
 
+		
+		echo ($_POST['emailLogin']);
+		echo ($_POST['passwordLogin']);
 		if (isset($_POST['emailLogin']))
-		{
+		{			
 			$email = clean_data($_POST['emailLogin']);
 		}
 		else
 		{
+			echo ("LoginFail");
 			$successfulLogin = false;
 			$loginError = "Please enter email";
 		}
@@ -225,7 +229,7 @@ session_start();
 					$_SESSION['fName'] = $row['fName'];
 					//echo("About to hit site controller");
 					header("Location: siteController.php");
-    				exit;
+    				exit();
 				}
 				else
 				{

@@ -34,8 +34,21 @@
 		$hash = crypt($password, $salt);
 		//echo("$hash <br>");
 
-		$insertQuery = "INSERT INTO tblUser (firstName, lastName, email, height, userPassword) VALUES ('$fName', '$lName', '$email', '$height', '$hash')";
-		$pdo->exec($insertQuery);
+		$insertQuery = "INSERT INTO tblUser (firstName, lastName, email, height, userPassword) VALUES (:fName, :lName, :email, :height, :hash)";
+		$preparedStatement = $pdo->prepare($insertQuery);
+
+		$preparedStatement->bindParam(":fName", $cFName);
+		$preparedStatement->bindParam(":lName", $cLName);
+		$preparedStatement->bindParam(":email", $cEmail);
+		$preparedStatement->bindParam(":height", $cHeight);
+		$preparedStatement->bindParam(":hash", $hash);
+
+		$cFName = clean_data($fName);
+		$cLName = clean_data($lName);
+		$cEmail = clean_data($email);
+		$cHeight = clean_data($height);
+
+		$preparedStatement->execute();
 	}
 
 	function findActivities($pdo)
@@ -47,13 +60,33 @@
 
 	function addActivity($accName, $colour, $pdo)
 	{
-		$insertQuery = "INSERT INTO tblActivity (activityName, activityColour) VALUES ('$accName', '$colour')";
-		$pdo->exec($insertQuery);
+		$insertQuery = "INSERT INTO tblActivity (activityName, activityColour) VALUES (:accName, :colour)";
+		$preparedStatement = $pdo->prepare($insertQuery);
+
+		$preparedStatement->bindParam(":accName", $cAccName);
+		$preparedStatement->bindParam(":colour", $colour);
+
+		$cAccName = clean_data($accName);
+
+		$preparedStatement->execute();
 	}
 
 	function addWorkout($userID, $activityID, $workoutDate, $workoutDuration, $workoutComment, $pdo)
 	{
-		$insertQuery = "INSERT INTO tblWorkout (userID, activityID, workoutDate, workoutMinutes, workoutComments) VALUES ('$userID', '$activityID', '$workoutDate', '$workoutDuration', '$workoutComment')";
-		$pdo->exec($insertQuery);
+		$insertQuery = "INSERT INTO tblWorkout (userID, activityID, workoutDate, workoutMinutes, workoutComments) VALUES (:userID, :activityID, :workoutDate, :workoutDuration, :workoutComment )";
+		$preparedStatement = $pdo->prepare($insertQuery);
+
+		$preparedStatement->bindParam(":userID", $cUserID);
+		$preparedStatement->bindParam(":activityID", $activityID);
+		$preparedStatement->bindParam(":workoutDate", $workoutDate);
+		$preparedStatement->bindParam(":workoutDuration", $cWorkoutDuration);
+		$preparedStatement->bindParam(":workoutComment", $cWorkoutComment);		
+
+		$cUserID = clean_data($userID);
+		$cWorkoutDuration = clean_data($workoutDuration);
+		$cWorkoutComment = (string)$workoutComment;
+		$cWorkoutComment = clean_data($cWorkoutComment);
+		//echo ("<h1>$cWorkoutComment</h1>");
+		$preparedStatement->execute();
 	}
 ?>

@@ -17,6 +17,7 @@ if(!isset($_SESSION)){session_start();}		//Check if session has start, if not th
 		$eventArray['title'] = $row['activityName'];
 		$eventArray['start'] = $row['workoutDate'];
 		$eventArray['color'] = $row['activityColour'];
+		$eventArray['description'] = $row['workoutComments'];
 
 		$events[] = $eventArray;
 	}

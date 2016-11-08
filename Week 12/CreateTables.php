@@ -59,7 +59,7 @@
 							userID INT(6) NOT NULL,			
 
 							PRIMARY KEY(activityID),
-							FOREIGN KEY (userID) REFERENCES tblUser(userID)
+							FOREIGN KEY (userID) REFERENCES tblUser2(userID)
 						)";
 		$pdo->exec($createQuery);
 	}

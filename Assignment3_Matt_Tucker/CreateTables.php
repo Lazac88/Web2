@@ -14,18 +14,46 @@
 	{
 		$dropQuery = "DROP TABLE IF EXISTS tblBMI";
 		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS tblWorkout";
-		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS tblActivity";
-		$pdo->exec($dropQuery);
-		$dropQuery = "DROP TABLE IF EXISTS tblUser";
-		$pdo->exec($dropQuery);
-		
-
 	}
 	catch(PDOException $e)
 	{
-		$error = 'Deleting Tables Failed';
+		$error = 'Deleting BMI Tables Failed';
+		include 'error.html.php';
+		exit();
+	}
+
+	try
+	{
+		$dropQuery = "DROP TABLE IF EXISTS tblWorkout";
+		$pdo->exec($dropQuery);
+	}
+	catch(PDOException $e)
+	{
+		$error = 'Deleting Workout Tables Failed';
+		include 'error.html.php';
+		exit();
+	}
+
+	try
+	{
+		$dropQuery = "DROP TABLE IF EXISTS tblActivity";
+		$pdo->exec($dropQuery);
+	}
+	catch(PDOException $e)
+	{
+		$error = 'Deleting activity Tables Failed';
+		include 'error.html.php';
+		exit();
+	}
+
+	try
+	{
+		$dropQuery = "DROP TABLE IF EXISTS tblUser";
+		$pdo->exec($dropQuery);
+	}
+	catch(PDOException $e)
+	{
+		$error = 'Deleting User Tables Failed';
 		include 'error.html.php';
 		exit();
 	}

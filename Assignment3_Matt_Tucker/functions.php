@@ -72,6 +72,13 @@
 		return $workoutResult;
 	}
 
+	function findWeekWorkouts($pdo, $userID)
+	{		
+		$selectString = "SELECT workoutDate, sum(workoutMinutes) as minutes FROM tblWorkout WHERE userID='$userID' AND workoutDate > DATE_SUB(NOW(), INTERVAL 1 WEEK) GROUP BY(workoutDate)";
+		$workoutResult = $pdo->query($selectString);
+		return $workoutResult;
+	}
+
 	function findBMI($pdo)
 	{
 		$selectString = "SELECT * FROM tblBMI";

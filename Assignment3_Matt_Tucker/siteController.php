@@ -135,6 +135,8 @@ session_start();
 	    }
 	    if ($link == '3')
 	    {
+	    	$userID = $_SESSION['userID'];
+	       	$workoutResults = findWeekWorkouts($pdo, $userID);
 	        include 'userGraphs.html.php';
 	        $_GET['link'] = -1;
 	        exit();

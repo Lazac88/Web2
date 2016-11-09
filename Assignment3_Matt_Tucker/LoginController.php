@@ -12,6 +12,7 @@ session_start();
 
 	//set global variables
 	$registrationSuccessful = "";
+	$loginErr = $passwordErr = "";
 
 	if(isset($_POST['Login']))
 	{
@@ -186,21 +187,19 @@ session_start();
 
 
 		$email = $_POST['emailLogin'];
-		echo (isset($_POST['emailLogin']));
-		echo ($_POST['emailLogin']);
-		echo ($_POST['passwordLogin']);
+		
 		if ($email != "")
 		{			
 			$email = clean_data($_POST['emailLogin']);
 		}
 		else
 		{
-			echo ("LoginFail");
 			$successfulLogin = false;
-			$loginError = "Please enter email";
+			$loginErr = "Please enter email";
 		}
 
-		if (isset($_POST['passwordLogin']))
+		$userPassword = $_POST['passwordLogin'];
+		if ($userPassword != "")
 		{
 			$userPassword = clean_data($_POST['passwordLogin']);
 		}
@@ -228,8 +227,8 @@ session_start();
 				if(crypt($userPassword, $row['userPassword']) === $row['userPassword'])
 				{
 					$_SESSION['userID'] = $row['userID'];
-					$_SESSION['fName'] = $row['fName'];
-					//echo("About to hit site controller");
+					$_SESSION['firstName'] = $row['firstName'];
+					//Once session is created redirect to site controller
 					header("Location: siteController.php");
     				exit();
 				}
@@ -240,11 +239,18 @@ session_start();
 					exit();
 				}
 			}
+			//If the users email is not found
 			else
 			{
 				$loginErr = "Login Unsuccessful";
+				include 'LoginPage.html.php';
 				exit();
 			}
+		}
+		else
+		{
+			include 'LoginPage.html.php';
+			exit();
 		}
 		
 	}

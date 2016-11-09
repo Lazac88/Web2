@@ -58,6 +58,27 @@
 		return $activityResult;
 	}
 
+	function findUsers($pdo)
+	{
+		$selectString = "SELECT * FROM tblUser";
+		$userResult = $pdo->query($selectString);
+		return $userResult;
+	}
+
+	function findWorkouts($pdo)
+	{
+		$selectString = "SELECT * FROM tblWorkout";
+		$workoutResult = $pdo->query($selectString);
+		return $workoutResult;
+	}
+
+	function findBMI($pdo)
+	{
+		$selectString = "SELECT * FROM tblBMI";
+		$BMIResult = $pdo->query($selectString);
+		return $BMIResult;
+	}
+
 	function addActivity($accName, $colour, $pdo)
 	{
 		$insertQuery = "INSERT INTO tblActivity (activityName, activityColour) VALUES (:accName, :colour)";

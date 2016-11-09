@@ -9,7 +9,7 @@ session_start();
 	include 'connect.inc.php';
 	include 'connectToServer.php';
 	include 'functions.php';
-
+	
 	//Declared here to stop an error on first visit to the add activity page
 	$actNameErr = $accName = "";
 	//console.log($_SESSION['userID'] ;
@@ -147,6 +147,10 @@ session_start();
 	    }
 	    if ($link == '5')
 	    {
+	    	$activityResult = findActivities($pdo);
+	    	$userResult = findUsers($pdo);
+	    	$workoutResult = findWorkouts($pdo);
+	    	$BMIResult = findBMI($pdo);
 	        include 'rawData.html.php';
 	        $_GET['link'] = -1;
 	        exit();

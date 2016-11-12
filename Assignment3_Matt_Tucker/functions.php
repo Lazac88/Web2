@@ -79,6 +79,28 @@
 		return $workoutResult;
 	}
 
+	function findMonthWorkouts($pdo, $userID)
+	{		
+		$selectString = "SELECT workoutDate, sum(workoutMinutes) as minutes FROM tblWorkout WHERE userID='$userID' AND workoutDate > DATE_SUB(NOW(), INTERVAL 1 MONTH) GROUP BY(workoutDate)";
+		$workoutResult = $pdo->query($selectString);
+		return $workoutResult;
+	}
+
+	function findWeekActivities($pdo, $userID)
+	{
+		$selectString = "SELECT activityName, sum(workoutMinutes) as minutes FROM tblActivity LEFT JOIN tblWorkout on tblActivity.activityID = tblWorkout.activityID WHERE userID = '$userID' AND workoutDate > DATE_SUB(NOW(), INTERVAL 1 WEEK) GROUP BY(activityName)";
+		$activityResult = $pdo->query($selectString);
+		return $activityResult;
+	}
+
+	function findAllUserWorkouts($pdo, $userID)
+	{
+		$selectString = "SELECT * FROM tblActivity LEFT JOIN tblWorkout on tblActivity.activityID = tblWorkout.activityID WHERE userID = '$userID' 
+			ORDER BY(workoutDate) DESC";
+		$userResults = $pdo->query($selectString);
+		return $userResults;
+	}
+
 	function findBMI($pdo)
 	{
 		$selectString = "SELECT * FROM tblBMI";

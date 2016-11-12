@@ -19,9 +19,10 @@
 		<ul>
   			<li><a href="?link=1" name="homePage">Home</a></li>
   			<li><a class="active" href="?link=2" name="enterWorkout">Enter Workout</a></li>
-  			<li><a href="?link=3" name="userGraphs">Show User Graphs</a></li>
-  			<li><a href="?link=4" name="friendsData">Friends Data</a></li>
-  			<li><a href="?link=5" name="rawData">Show Raw Data</a></li>
+  			<li><a href="?link=3" name="userGraphs">User Statistics</a></li>
+  			<li><a href="?link=4" name="userData">User Data</a></li>
+  			<li><a href="?link=5" name="friendsData">Friends Data</a></li>
+  			<li><a href="?link=6" name="rawData">Show Raw Data</a></li>
 		</ul>
 	</div>
 

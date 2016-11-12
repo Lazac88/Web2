@@ -137,17 +137,27 @@ session_start();
 	    {
 	    	$userID = $_SESSION['userID'];
 	       	$workoutResults = findWeekWorkouts($pdo, $userID);
+	       	$activityResults = findWeekActivities($pdo, $userID);
+	       	$workoutResultsMonth = findMonthWorkouts($pdo, $userID);
 	        include 'userGraphs.html.php';
 	        $_GET['link'] = -1;
 	        exit();
 	    }
 	    if ($link == '4')
 	    {
+	    	$userID = $_SESSION['userID'];
+	    	$userResults = findAllUserWorkouts($pdo, $userID);
+	    	include 'userData.html.php';
+	    	$_GET['link'] = -1;
+	        exit();
+	    }
+	    if ($link == '5')
+	    {
 	        include 'friendsData.html.php';
 	        $_GET['link'] = -1;
 	        exit();
 	    }
-	    if ($link == '5')
+	    if ($link == '6')
 	    {
 	    	$activityResult = findActivities($pdo);
 	    	$userResult = findUsers($pdo);
@@ -157,7 +167,7 @@ session_start();
 	        $_GET['link'] = -1;
 	        exit();
 	    }
-	    if ($link == '6')
+	    if ($link == '7')
 	    {
 	        include 'addActivity.html.php';
 	        $_GET['link'] = -1;

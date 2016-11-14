@@ -8,17 +8,19 @@
 <body>
 	
 	<header>
-	<?php
+	
+	</header>
+	<div class="subBanner">
+		<H1>Exercise Tracker</H1>
+		<?php
 			$self = htmlentities($_SERVER['PHP_SELF']);
 			echo "<form action= $self method='POST'>";
 			$userName = $_SESSION['firstName'];
 			echo ("<input id='logoutBtn' type='submit' name='logoutBtn' value='Logout'>");
 			echo ("<span id='helloBtn'>Hello $userName </span>");
 		?>			
-			</form>
-		<H1>Exercise Tracker</H1>
-	</header>
-
+			</form>		
+	</div>
 	<div class="menu">
 		<ul>
   			<li><a href="?link=1" name="homePage">Home</a></li>
@@ -50,6 +52,27 @@
 			echo "<td>$row[activityName]</td>";
 			echo "<td>$row[workoutMinutes]</td>";
 			echo "<td>$row[workoutComments]</td>";
+			echo "</tr>";
+		}
+
+		?>
+
+	</table>
+
+	<br>
+  		<table class="rawDataDisplay">
+		<tr>
+			<th>Activity</th>
+			<th>Life Time Duration (mins)</th>
+		</tr>
+
+		<?php
+		
+		foreach($allTimeResults as $row)
+		{
+			echo "<tr>";			
+			echo "<td>$row[activityName]</td>";
+			echo "<td>$row[minutes]</td>";
 			echo "</tr>";
 		}
 

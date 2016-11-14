@@ -147,12 +147,14 @@ session_start();
 	    {
 	    	$userID = $_SESSION['userID'];
 	    	$userResults = findAllUserWorkouts($pdo, $userID);
+	    	$allTimeResults = findAllTimeWorkouts($pdo, $userID);
 	    	include 'userData.html.php';
 	    	$_GET['link'] = -1;
 	        exit();
 	    }
 	    if ($link == '5')
 	    {
+	    	$friendTotals = findFriendTotals($pdo);
 	        include 'friendsData.html.php';
 	        $_GET['link'] = -1;
 	        exit();

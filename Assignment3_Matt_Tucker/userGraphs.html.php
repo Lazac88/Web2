@@ -121,16 +121,19 @@
 <body>
 	
 	<header>
-		<?php
-			$self = htmlentities($_SERVER['PHP_SELF']);
-			echo "<form action= $self method='POST'>";
-			$userName = $_SESSION['firstName'];
-			echo ("<input id='logoutBtn' type='submit' name='logoutBtn' value='Logout'>");
-			echo ("<span id='helloBtn'>Hello $userName </span>");
-		?>
-			</form>
-		<H1>Exercise Tracker</H1>
+		
 	</header>
+  <div class="subBanner">
+    <H1>Exercise Tracker</H1>
+    <?php
+      $self = htmlentities($_SERVER['PHP_SELF']);
+      echo "<form action= $self method='POST'>";
+      $userName = $_SESSION['firstName'];
+      echo ("<input id='logoutBtn' type='submit' name='logoutBtn' value='Logout'>");
+      echo ("<span id='helloBtn'>Hello $userName </span>");
+    ?>      
+      </form>   
+  </div>
 
 	<div class="menu">
 		<ul>

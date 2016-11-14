@@ -142,7 +142,7 @@ session_start();
 				//If passwords match, check to see if password matches password criteria
 				if(!preg_match($passwordCriteria, $password))
 				{
-					$passwordErr = "Password not valid. Can only contain alphanumeric characters and the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
+					$passwordErr = "Password not valid. Must contain at least one upper and lower case letter and at least one of the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
 					$dataCorrect = false;
 				}
 			}

@@ -28,28 +28,33 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
         data.addColumn('number', 'User');
+        data.addColumn('number', 'Target');
         <?php
             foreach($workoutResults as $row)
             {
               //print_r($row);
-              echo " data.addRow([ '{$row[0]}', {$row[1]} ]); ";
+              echo " data.addRow([ '{$row[0]}', {$row[1]}, 30 ]); ";
             }
         ?>
         // Set chart options
-        var options = {'title':'Weekly Exercise',
-                        hAxis: {
-                              title: 'Date',
-                              }, 
-                        vAxis: {
-                              title: 'Minutes of exercise per day'
-                              },
-                       'width':1000,
-                       'height':400};
+        var options = {
+                          title:'Weekly Exercise',
+                          hAxis: {
+                                title: 'Date',
+                                }, 
+                          vAxis: {
+                                title: 'Minutes of exercise per day'
+                                },
+                          seriesType: 'bars',
+                          series: {2: {type: 'line'}},
+                         'width':1000,
+                         'height':400
+                        };
 
         // Instantiate and draw our chart, passing in some options.
         //var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         //chart.draw(data, options);
-        var barChart = new google.visualization.ColumnChart(document.getElementById('barChart_div'));
+        var barChart = new google.visualization.ComboChart(document.getElementById('barChart_div'));
         barChart.draw(data, options);
       }
 

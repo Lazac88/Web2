@@ -32,7 +32,7 @@ session_start();
 		$firstNameCriteria = "(^[a-zA-Z]{2,}$)";
 		$lastNameCriteria = "(^[a-zA-Z]+$)";
 		$heightCriteria = "(^[0-9]{2,3}$)";
-		$passwordCriteria = "((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+		
 		//Define variables and set to empty values
 		$fNameErr = $lNameErr = $emailErr = $heightErr = $passwordErr = $secretCodeErr = "";
 		$fName = $lName = $email = $height = $password = "";
@@ -138,9 +138,16 @@ session_start();
 			//If passwords do match...
 			else
 			{
+				//$passwordCriteria = "((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+				$passwordCriteria = "^(?=.{6,20})(?=.*[0-9]+)(?=.*[a-z]+)(.*[A-Z]+)";
 				$password = clean_data($_POST["password1"]);
+				print_r($password);
 				//If passwords match, check to see if password matches password criteria
-				if(!preg_match($passwordCriteria, $password))
+				if(preg_match("/$passwordCriteria/", $password))
+				{
+					//Do nothing
+				}
+				else
 				{
 					$passwordErr = "Password not valid. Must contain at least one upper and lower case letter and at least one of the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
 					$dataCorrect = false;

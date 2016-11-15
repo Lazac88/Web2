@@ -31,7 +31,13 @@
               //$friendTotals = findFriendTotals($pdo);
               foreach($friendTotals as $row)
               {
-                echo " data.addRow([ '{$row[0]}', {$row[1]} ]); ";
+
+                //if statement required because friends data graph breaks if a user has not entered any workouts
+                if($row[1] != NULL)
+                {
+                  echo " data.addRow([ '{$row[0]}', {$row[1]} ]); ";
+                }
+                
               }
           ?>
           // Set chart options
@@ -45,9 +51,6 @@
                          'width':1000,
                          'height':400};
 
-          // Instantiate and draw our chart, passing in some options.
-          //var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-          //chart.draw(data, options);
           var barChart = new google.visualization.ColumnChart(document.getElementById('barChart_div'));
           barChart.draw(data, options);
         }

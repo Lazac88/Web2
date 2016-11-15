@@ -138,8 +138,8 @@ session_start();
 			//If passwords do match...
 			else
 			{
-				//$passwordCriteria = "((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
-				$passwordCriteria = "^(?=.{6,20})(?=.*[0-9]+)(?=.*[a-z]+)(.*[A-Z]+)";
+				$passwordCriteria = "((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})";
+				//$passwordCriteria = "^(?=.{6,20})(?=.*[0-9]+)(?=.*[a-z]+)(.*[A-Z]+)";
 				$password = clean_data($_POST["password1"]);
 				print_r($password);
 				//If passwords match, check to see if password matches password criteria
@@ -149,7 +149,7 @@ session_start();
 				}
 				else
 				{
-					$passwordErr = "Password not valid. Must contain at least one upper and lower case letter and at least one of the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
+					$passwordErr = "Password not valid. Must contain at least one upper and lower case letter, one number, and at least one of the following special characters: @ # $ %. Must be between 6 to 20 characters<br>";
 					$dataCorrect = false;
 				}
 			}

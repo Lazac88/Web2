@@ -38,6 +38,8 @@
         ?>
         // Set chart options
         var options = {
+                         'width':1000,
+                         'height':400,
                           title:'Weekly Exercise',
                           hAxis: {
                                 title: 'Date',
@@ -46,9 +48,7 @@
                                 title: 'Minutes of exercise per day'
                                 },
                           seriesType: 'bars',
-                          series: {2: {type: 'line'}},
-                         'width':1000,
-                         'height':400
+                          series: {2: {type: 'line'}}                         
                         };
 
         // Instantiate and draw our chart, passing in some options.

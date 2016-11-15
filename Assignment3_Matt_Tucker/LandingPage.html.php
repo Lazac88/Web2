@@ -6,7 +6,10 @@
 		<meta charset="UTF-8">
 </head>
 <body>
-		<div id="frontBanner">
+	<header>
+	</header>
+		<div class="subBannerLogin">
+			<H1>Exercise Tracker</H1>		
 			<?php
 				$self = htmlentities($_SERVER['PHP_SELF']);
 				echo "<form action= $self method='POST'>"

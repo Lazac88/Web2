@@ -29,21 +29,24 @@ input {
 	color: red;
 }
 
-#frontBanner
-{
-	width: 100%;
-	height: 200px;
-	background-color: green;
-}
-
 #landingPage
 {
 	width: 80%;
 	height: 650px;
 	margin: 0 auto;
-	margin-top: 30px;
+	margin-top: 249px;
 	margin-bottom: 30px;
 	border: solid black 1px;
+}
+
+.subBannerLogin
+{
+	height: 50px;
+	margin-top: -50px;
+	background-color: black;
+	width: 100%;
+	position:fixed;
+	z-index: 10;
 }
 
 #registerPage
@@ -51,7 +54,7 @@ input {
 	width: 80%;
 	height: 650px;
 	margin: 0 auto;
-	margin-top: 30px;
+	margin-top: 250px;
 	margin-bottom: 30px;
 	border: solid black 1px;
 }
@@ -101,7 +104,10 @@ input {
 .welcomeInfo
 {
 	text-align: center;
+	padding-left: 200px;
+	padding-top: 50px;
 	font-size: 30px;
+	color: black;
 }
 
 .alignFormCenter

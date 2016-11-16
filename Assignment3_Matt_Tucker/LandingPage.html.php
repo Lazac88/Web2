@@ -1,3 +1,8 @@
+<!--
+	Matt Tucker
+	Assignment 3
+	Date 16/11/16
+-->
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -28,6 +33,8 @@
 			<h1 class="welcomeInfo">Welcome To The Exercise Tracker</h1>
 			<br>
 			<h1 class="welcomeInfo">Please Login or Register Above</h1>
+
+			<h1 class="welcomeInfo">This website is used for tracking your workouts and providing statitical feedback on your progress. You can also compare your activity to your friends.</h1>
 		</div>
 </body>
 

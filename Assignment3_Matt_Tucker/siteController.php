@@ -2,8 +2,8 @@
 session_start();
 	/*
 	Name: Matt Tucker
-	Date: 3rd September 2016
-	Assignment 2
+	Date: 16th November 2016
+	Assignment 3
 	*/
 
 	include 'connect.inc.php';
@@ -19,7 +19,7 @@ session_start();
     	exit();
     }
     
-    else if(isset($_POST['logoutBtn']))
+    else if(isset($_POST['logoutBtn']))			//If logout button pushed
     {
     	// remove all session variables
 		session_unset(); 
@@ -27,19 +27,19 @@ session_start();
 		// destroy the session 
 		session_destroy();
 
-		header("Location: LoginController.php");
+		header("Location: LoginController.php");	//Redirect to LoginController
 	    exit();
     }
 
-    else if(isset($_POST['backActivityBtn']))
+    else if(isset($_POST['backActivityBtn']))		//Back button on addActivity Page
     {
     	$activityResult = findActivities($pdo);
 	    include 'enterWorkout.html.php';
 	    exit();
     }
     
-    else if(isset($_POST['submitActivityButton']))
-    {
+    else if(isset($_POST['submitActivityButton']))	//Submit Activity Button on addActivity Page
+    {	
     	$actNameErr = "";
     	$actName = "";
     	$colourCode = "";
@@ -96,7 +96,7 @@ session_start();
     	
     }
 
-    else if (isset($_POST['submitWorkoutBtn']))
+    else if (isset($_POST['submitWorkoutBtn']))			//If submit workout button is pushed
     {
     	$userID = $_SESSION['userID'];
     	$activityID = $_POST['activityResult'];    	
@@ -176,7 +176,7 @@ session_start();
 	        exit();
 	    }
     } 
-    else
+    else 								//Go to calendar page
     {
     	//echo ("<h1>Hit else</h1>");
     	include 'homePage.html.php';

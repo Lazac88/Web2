@@ -1,3 +1,9 @@
+<!--
+	Name: Matt Tucker
+	Date: 16th November 2016
+	Assignment 3
+-->
+
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -56,6 +62,7 @@
 			?>
 	  			<label>Choose Activity</label>
 	  			<br><br>
+	  			<!--Loop To Display All Activities-->
 	  			<select class="" name="activityResult">
 					<?php
 						foreach ($activityResult as $row) 
@@ -65,8 +72,10 @@
 					?>
 				</select>
 				<br><br>
+				<!--Link to Add Activity Page-->
 				<a href="?link=7" id="addActivity" name="addActivity">+Add Activity</a><br>
 				<label>Duration in minutes (maximum 240):</label>
+				<!--Max and min set to stop 0 input and unrealistic input-->
 				<input type="number"  name="workoutDuration" min="1" max="240">
 				<br><br>
 				<label>Date:</label><input type="text" name="datepicker" id="datepicker">

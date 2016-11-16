@@ -2,8 +2,8 @@
 
 /*
 	Name: Matt Tucker
-	Date: 11/10/16
-	Week 11 - Session Management
+	Date: 16/11/16
+	Assignment 3
 */
 	//Put secret code here to hide from nosey people
 	$secret = "motivateme";

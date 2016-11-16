@@ -2,8 +2,8 @@
 session_start();
 	/*
 	Name: Matt Tucker
-	Date: 3rd September 2016
-	Assignment 2
+	Date: 16th November 2016
+	Assignment 3
 	*/
 
 	include 'connect.inc.php';
@@ -14,19 +14,19 @@ session_start();
 	$registrationSuccessful = "";
 	$loginErr = $passwordErr = "";
 
-	if(isset($_POST['Login']))
+	if(isset($_POST['Login']))				//If login button pushed
 	{
 		include 'LoginPage.html.php';
 	}
 
-	else if(isset($_POST['Register']))
+	else if(isset($_POST['Register']))		//If register button pushed
 	{
 		$fNameErr = $lNameErr = $emailErr = $heightErr = $passwordErr = $secretCodeErr = "";
 		$fName = $lName = $email = $height = $password = "";
 		include 'RegisterPage.html.php';
 	}	
 
-	else if(isset($_POST['RegisterButton']))
+	else if(isset($_POST['RegisterButton']))	//User submit registration
 	{
 		//Define regular expressions
 		$firstNameCriteria = "(^[a-zA-Z]{2,}$)";
@@ -164,7 +164,11 @@ session_start();
 		}
 		else
 		{
-			if(!$_POST["secretCode"] == $secret)	//$secret on function page
+			if($_POST["secretCode"] == $secret)	//$secret on function page
+			{
+				//Proceed
+			}
+			else
 			{
 				$secretCodeErr = "Secret code incorrect";
 				$dataCorrect = false;
@@ -187,7 +191,7 @@ session_start();
 	}
 
 	//When Login button is clicked
-	else if(isset($_POST['LoginButton']))
+	else if(isset($_POST['LoginButton']))		
 	{
 		$successfulLogin = true;
 		$loginErr = $passwordErr = "";

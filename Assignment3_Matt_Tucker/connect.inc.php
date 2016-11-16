@@ -2,8 +2,8 @@
 
 /*
 	Name: Matt Tucker
-	Date: 11/10/16
-	Week 11 - Session Management
+	Date: 16th November
+	Assignment 3
 */
 
 

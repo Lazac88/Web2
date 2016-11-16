@@ -1,3 +1,8 @@
+<!--
+	Matt Tucker
+	Assignment 3
+	16th November 2016
+-->
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -45,10 +50,10 @@
 			<h2 id="activityEntry">New Activity</h2>
 			<?php 
 				
-				echo ("	<label>New Activity:</label> <input type='text' name='activityName' value=''/> <span class='error'>* $actNameErr</span> <br> ");
+				echo ("	<label>New Activity:</label> <input type='text' name='activityName' value=''/> <span class='error'>* $actNameErr</span> <br> "); //Provides feedback if activity already exists
 			?>
   			<label>Activity Colour:</label>
-  			<input type="color" id="html5colorpicker" name="colourName" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" style="width:169px;">
+  			<input type="color" id="html5colorpicker" name="colourName" onchange="clickColor(0, -1, -1, 5)" value="#ff0000" style="width:169px;">	<!--Simplr colour picker-->
   			<br><br><br>  			
   			<input id="submitActivityBtn" type="submit" name="submitActivityButton" value="Submit">
   			</form>

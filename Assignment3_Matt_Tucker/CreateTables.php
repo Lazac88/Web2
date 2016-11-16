@@ -1,9 +1,9 @@
 <?php
-
-	/*
+/*
 	Name: Matt Tucker
-	Date: 20th October
-	*/
+	Date: 16th November 2016
+	Assignment 3
+*/
 
 	include 'connect.inc.php';
 	include 'connectToServer.php';

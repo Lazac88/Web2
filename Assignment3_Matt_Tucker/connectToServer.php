@@ -1,4 +1,9 @@
 <?php
+/*
+	Name: Matt Tucker
+	Date: 16th November 2016
+	Assignment 3
+*/
 //Connect to mySQL server
 	try
 	{

@@ -1,4 +1,11 @@
 <?php
+/*
+	Matt Tucker
+	Assignment 3
+	Date 16/11/16
+*/
+
+//Feed information to the calendar
 if(!isset($_SESSION)){session_start();}		//Check if session has start, if not then start
 
 	include 'connect.inc.php';

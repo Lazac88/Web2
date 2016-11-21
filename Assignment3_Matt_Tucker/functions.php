@@ -58,6 +58,13 @@
 		return $activityResult;
 	}
 
+	function findHeight($pdo, $userID)
+	{
+		$selectString = "SELECT height FROM tblUser WHERE userID='$userID'";
+		$heightResult = $pdo->query($selectString);
+		return $heightResult;
+	}
+
 	function findUsers($pdo)
 	{
 		$selectString = "SELECT * FROM tblUser";
@@ -115,7 +122,14 @@
 		return $friendTotals;
 	}
 
-	function findBMI($pdo)
+	function findBMI($pdo, $userID)
+	{
+		$selectString = "SELECT bmiDate, weight, bmi FROM tblBMI WHERE userID='$userID'";
+		$BMIResult = $pdo->query($selectString);
+		return $BMIResult;
+	}
+
+	function findAllBMI($pdo)
 	{
 		$selectString = "SELECT * FROM tblBMI";
 		$BMIResult = $pdo->query($selectString);
@@ -152,5 +166,11 @@
 		$cWorkoutComment = clean_data($cWorkoutComment);
 		//echo ("<h1>$cWorkoutComment</h1>");
 		$preparedStatement->execute();
+	}
+
+	function addWeight($userID, $bmiDate, $weight, $bmi, $pdo)
+	{
+		$insertQuery = "INSERT INTO tblBMI (userID, bmiDate, weight, bmi) VALUES ('$userID', '$bmiDate', '$weight', '$bmi')";
+		$pdo->exec($insertQuery);
 	}
 ?>

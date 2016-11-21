@@ -48,8 +48,9 @@
   			<li><a class="active" href="?link=2" name="enterWorkout">Enter Workout</a></li>
   			<li><a href="?link=3" name="userGraphs">User Statistics</a></li>
   			<li><a href="?link=4" name="userData">User Data</a></li>
-  			<li><a href="?link=5" name="friendsData">Friends Data</a></li>
-  			<li><a href="?link=6" name="rawData">Show Raw Data</a></li>
+  			<li><a href="?link=5" name="trackWeight">Track Weight</a></li>
+  			<li><a href="?link=6" name="friendsData">Friends Data</a></li>
+  			<li><a href="?link=7" name="rawData">Show Raw Data</a></li>
 		</ul>
 	</div>
 
@@ -73,7 +74,7 @@
 				</select>
 				<br><br>
 				<!--Link to Add Activity Page-->
-				<a href="?link=7" id="addActivity" name="addActivity">+Add Activity</a><br>
+				<a href="?link=8" id="addActivity" name="addActivity">+Add Activity</a><br>
 				<label>Duration in minutes (maximum 240):</label>
 				<!--Max and min set to stop 0 input and unrealistic input-->
 				<input type="number"  name="workoutDuration" min="1" max="240">

@@ -33,8 +33,9 @@
   			<li><a href="?link=2" name="enterWorkout">Enter Workout</a></li>
   			<li><a href="?link=3" name="userGraphs">User Statistics</a></li>
   			<li><a href="?link=4" name="userData">User Data</a></li>
-  			<li><a href="?link=5" name="friendsData">Friends Data</a></li>
-  			<li><a class="active" href="?link=6" name="rawData">Show Raw Data</a></li>
+  			<li><a href="?link=5" name="trackWeight">Track Weight</a></li>
+  			<li><a href="?link=6" name="friendsData">Friends Data</a></li>
+  			<li><a class="active" href="?link=7" name="rawData">Show Raw Data</a></li>
 		</ul>
 	</div>
 
@@ -123,6 +124,7 @@
 			<th>userID</th>			
 			<th>bmiDate</th>
 			<th>Weight</th>
+			<th>BMI</th>
 		</tr>
 		<?php		
 			foreach($BMIResult as $row)
@@ -132,6 +134,7 @@
 				echo "<td>$row[userID]</td>";			
 				echo "<td>$row[bmiDate]</td>";
 				echo "<td>$row[weight]</td>";
+				echo "<td>$row[bmi]</td>";
 				echo "</tr>";
 			}
 		?>

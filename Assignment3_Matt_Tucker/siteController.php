@@ -113,6 +113,31 @@ session_start();
 
     }
 
+    elseif (isset($_POST['submitWeightBtn'])) 
+    {
+    	$userID = $_SESSION['userID'];
+    	$weight = $_POST['weight'];
+    	$weightDate = $_POST['datepicker'];
+    	$weightDate = strtotime($weightDate);			//Convert from string to time
+    	$weightDate = date('Y-m-d', $weightDate);  	//Convert into correct format
+    	$heightQuery = findHeight($pdo, $userID);
+    	$heightCM = 0.00;
+    	foreach ($heightQuery as $row) 
+			{				
+				$heightCM = $row['height'];
+			}
+    	$heightM = $heightCM / 100; 					//Convert Height To Meters
+    	//BMI equals weight(kg)/height(m)
+    	$BMI =  $weight / ($heightM * $heightM);
+    	
+    	addWeight($userID, $weightDate, $weight, $BMI, $pdo);
+
+    	$BMIResults = findBMI($pdo, $userID);
+    	include 'trackWeight.html.php';
+    	exit();
+
+    }
+
 
     //Checks to see if any links have been clicked and redirects to the correct page
     //Set $_GET['link'] to -1 on completion so it doesn't trigger an if in the future
@@ -154,22 +179,30 @@ session_start();
 	    }
 	    if ($link == '5')
 	    {
+	    	$userID = $_SESSION['userID'];
+	    	$BMIResults = findBMI($pdo, $userID);
+	    	include 'trackWeight.html.php';
+	    	$_GET['link'] = -1;
+	        exit();
+	    }
+	    if ($link == '6')
+	    {
 	    	$friendTotals = findFriendTotals($pdo);
 	        include 'friendsData.html.php';
 	        $_GET['link'] = -1;
 	        exit();
 	    }
-	    if ($link == '6')
+	    if ($link == '7')
 	    {
-	    	$activityResult = findActivities($pdo);
+	        $activityResult = findActivities($pdo);
 	    	$userResult = findUsers($pdo);
 	    	$workoutResult = findWorkouts($pdo);
-	    	$BMIResult = findBMI($pdo);
+	    	$BMIResult = findAllBMI($pdo);
 	        include 'rawData.html.php';
 	        $_GET['link'] = -1;
 	        exit();
 	    }
-	    if ($link == '7')
+	    if ($link == '8')
 	    {
 	        include 'addActivity.html.php';
 	        $_GET['link'] = -1;

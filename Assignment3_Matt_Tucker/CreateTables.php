@@ -135,7 +135,8 @@
 							bmiID INT(6) NOT NULL AUTO_INCREMENT,
 							userID INT(6) NOT NULL,
 							bmiDate DATE NOT NULL,							
-							weight INT(6) NOT NULL,
+							weight DECIMAL(6,2) NOT NULL,
+							bmi DECIMAL(6,2) NOT NULL,
 										
 
 							PRIMARY KEY(bmiID),
